@@ -4,13 +4,18 @@ export const ProductContext= createContext()
 
 export default function Context(props) {
     const [products,setProducts]= useState([]);
+    const [loading,setLoading]=useState(true)
 
     const getData= async()=>{
         try{
-            const {data}= await axiosInstance.get('/products');
-            console.log(data)
+            setLoading(true)
+            const {data}=  await axiosInstance.get('/products')
+            setProducts(data);
+            setLoading(false)
+            // console.log(data)
         }
         catch(err){
+            setLoading(false)
             console.log(err)
         }
     }
@@ -20,7 +25,7 @@ export default function Context(props) {
     },[])
 
   return (
-    <ProductContext.Provider value={[products,setProducts]}>
+    <ProductContext.Provider value={[products,loading,setLoading]}>
         {props.children}
     </ProductContext.Provider>
   )
