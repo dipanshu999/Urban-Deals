@@ -17,10 +17,9 @@ export default function Home() {
       <>
         <div className='flex justify-center mt-10 gap-10 items-center'>
           <input type="text" placeholder='Search' className='p-2 bg-gray-100 rounded-3xl border  border-black'/>
-          <Dropdown/>
+          {/* <Dropdown products={products}/> */}
         </div>
 
-    
 
         <div className='card-container  w-[80vw] mx-auto flex flex-wrap gap-16 pt-6 justify-center'>
            {

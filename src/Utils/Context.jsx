@@ -4,6 +4,7 @@ export const ProductContext= createContext()
 
 export default function Context(props) {
     const [products,setProducts]= useState([]);
+    const [copyProducts,setCopyProducts]= useState([]);
     const [loading,setLoading]=useState(true)
 
     const getData= async()=>{
@@ -11,8 +12,9 @@ export default function Context(props) {
             setLoading(true)
             const {data}=  await axiosInstance.get('/products')
             setProducts(data);
+            setCopyProducts(data);
             setLoading(false)
-            // console.log(data)
+            
         }
         catch(err){
             setLoading(false)
@@ -24,8 +26,10 @@ export default function Context(props) {
         getData();
     },[])
 
+    
+
   return (
-    <ProductContext.Provider value={[products,loading,setLoading]}>
+    <ProductContext.Provider value={[products,loading,copyProducts,setProducts]}>
         {props.children}
     </ProductContext.Provider>
   )

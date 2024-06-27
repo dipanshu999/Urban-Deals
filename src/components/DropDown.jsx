@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { ProductContext } from '../Utils/Context';
 
 export default function DropDown() {
+
+  let [copyProducts,setProducts]=useContext(ProductContext)
+
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState('Filter');
 
@@ -13,6 +17,20 @@ export default function DropDown() {
     setIsOpen(false); // Close the dropdown menu
   };
 
+ 
+  const filterProducts=(category)=>{
+    category?
+      setProducts(copyProducts.filter(item=>item.category === category))
+    :
+      setProducts(copyProducts)
+  }
+
+  const handleSelectAndFilter = (item, category) => {
+    handleSelect(item);
+    filterProducts(category);
+  };
+
+
   return (
     <div className="relative inline-block text-left p-2 rounded-xl ">
       <div >
@@ -22,7 +40,7 @@ export default function DropDown() {
           id="menu-button"
           aria-expanded={isOpen}
           aria-haspopup="true"
-          onClick={toggleDropdown}
+          onClick={()=>{toggleDropdown(); }}
         >
           {selectedItem}
           <svg
@@ -54,7 +72,7 @@ export default function DropDown() {
               role="menuitem"
               tabIndex={-1}
               id="menu-item-0"
-              onClick={() => handleSelect('All section')}
+              onClick={() => handleSelectAndFilter("All section", null)}
             >
               All section
             </a>
@@ -64,7 +82,7 @@ export default function DropDown() {
               role="menuitem"
               tabIndex={-1}
               id="menu-item-1"
-              onClick={() => handleSelect("Men's")}
+              onClick={() => handleSelectAndFilter("Men's", "men's clothing")}
             >
               Men's
             </a>
@@ -76,7 +94,7 @@ export default function DropDown() {
               role="menuitem"
               tabIndex={-1}
               id="menu-item-2"
-              onClick={() => handleSelect("Women's")}
+              onClick={() =>handleSelectAndFilter("Women's", "women's clothing")}
             >
               Women's
             </a>
@@ -86,7 +104,7 @@ export default function DropDown() {
               role="menuitem"
               tabIndex={-1}
               id="menu-item-3"
-              onClick={() => handleSelect('Jwellery')}
+              onClick={() => handleSelectAndFilter('Jwellery', 'jewelery')}
             >
               Jwellery
             </a>
@@ -99,7 +117,7 @@ export default function DropDown() {
               role="menuitem"
               tabIndex={-1}
               id="menu-item-5"
-              onClick={() => handleSelect('Electronics')}
+              onClick={() => handleSelectAndFilter('Electronics','electronics')}
             >
               Electronics
             </a>
