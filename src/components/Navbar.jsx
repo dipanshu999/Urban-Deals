@@ -12,7 +12,7 @@ export default function Navbar() {
           </div>
         </Link>
 
-        <div className="navLinks text-4xl  ">
+        <div className="hidden tab:block navLinks text-4xl  ">
           <ul className=' list-none flex gap-10 font-light'>
             <li>About</li>
             <li>Contact</li>

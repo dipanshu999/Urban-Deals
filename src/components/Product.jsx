@@ -35,24 +35,25 @@ export default function Product() {
     if (words.length <= wordLimit) {
       return text;
     }
-    return words.slice(0, wordLimit).join(' ') + '...';
+    return words.slice(0, wordLimit).join(' ') + ' ...';
   }
  
   const{title,description,category,image,price}=product;
   const truncatedDescription = truncateText(description, 35);
-  const truncatedTitle = truncateText(description, 7);
+  const truncatedTitle = truncateText(title, 7);
  
   return (
     <>
-      <div className='product-container flex gap-10 justify-center items-center w-[70vw] min-h-[70vh] shadow-2xl rounded-xl mx-auto mt-10 '>
+      <div className='flex flex-col gap-5 mob:w-[90vw] mob:mt-16 tab:w-[80vw] tab:min-h-[70vh] tab:flex-row tab:gap-20 lap:w-[70vw] shadow-2xl rounded-2xl mx-auto mt-10  justify-center items-center  '>
         
         <div className="pic h-[20em] w-[17em] " >
-          <img src={image} className='h-full object-contain ' alt="" />
+          <img src={image} className='h-full object-contain ' alt={category} />
         </div>
 
-        <div className="description w-[35em] h-[20em] flex flex-col gap-4 justify-center ">
+        <div className="detail w-[35em] h-[20em] border flex flex-col gap-4 justify-center items-center ">
+
           <div className="title">
-            <p className='text-5xl font-semibold'>{truncatedTitle}</p>
+            <p className='tab:text-4xl lap:text-5xl font-semibold'>{truncatedTitle}</p>
           </div>
 
           <div className="category">
@@ -63,13 +64,13 @@ export default function Product() {
             <p className='text-orange-600 text-xl'>${price}</p>
           </div>
 
-          <div className="detail w-[90%] min-h-20  text-blue-950">
-            <p className='text-sm '>{truncatedDescription}</p>
+          <div className="w-[60%] description border leading-4 tab:w-[95%] min-h-18  text-blue-950">
+            <p className=' tab:text-[12px] lap:text-sm'>{truncatedDescription}</p>
           </div>
 
           <div className="btn flex gap-4">
-            <button className='border-2 border-green-300 px-4 py-2  rounded-xl '>Edit</button>
-            <button className='border-2 border-red-300 px-4 py-2  rounded-xl '>Delete</button>
+            <button className='border-2 border-green-300 px-4 tab:py-1 lap:py-2  rounded-xl '>Edit</button>
+            <button className='border-2 border-red-300   px-4 tab:py-1 lap:py-2  rounded-xl '>Delete</button>
           </div>
         </div>
 
