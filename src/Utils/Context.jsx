@@ -6,6 +6,9 @@ export default function Context(props) {
     const [products,setProducts]= useState([]);
     const [copyProducts,setCopyProducts]= useState([]);
     const [loading,setLoading]=useState(true)
+    const[navToggle,setNavToggle]= useState(false);
+
+  
 
     const getData= async()=>{
         try{
@@ -29,7 +32,7 @@ export default function Context(props) {
     
 
   return (
-    <ProductContext.Provider value={[products,loading,copyProducts,setProducts]}>
+    <ProductContext.Provider value={[products,loading,copyProducts,setProducts,setNavToggle,navToggle]}>
         {props.children}
     </ProductContext.Provider>
   )
