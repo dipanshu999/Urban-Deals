@@ -15,10 +15,10 @@ export default function Home() {
       <>
         <div className='flex justify-center mt-10 gap-10 items-center '>
           <input type="text" placeholder='Search' className='p-2 bg-gray-100 rounded-3xl border  border-black'/>
-          {/* <Dropdown products={products}/> */}
+          <Dropdown products={products}/>
         </div>
 
-
+        
         <div className='card-container gap-12 xsm:w-[92vw] lap:w-[88vw] mob:gap-16 mx-auto flex flex-wrap  pt-6 justify-center'>
            {
              products.map(item=> <Link key={item.id} to={`/product/${item.id}`}> <Card item={item} /></Link>)

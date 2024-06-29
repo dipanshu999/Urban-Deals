@@ -3,7 +3,7 @@ import { ProductContext } from '../Utils/Context';
 
 export default function DropDown() {
 
-  let [copyProducts,setProducts]=useContext(ProductContext)
+  const [products, loading, copyProducts, setProducts] = useContext(ProductContext);
 
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState('Filter');

@@ -28,7 +28,7 @@ export default function Product() {
   },[])
 
   if (!product) {
-    return <Loader></Loader>;
+    return <Loader/>;
   }
 
   function truncateText(text, wordLimit) {
