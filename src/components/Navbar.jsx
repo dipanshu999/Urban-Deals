@@ -10,7 +10,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className=' bg-white-100 h-[60px] tab:h-[70px] w-full backdrop-blur-sm sticky top-0  z-30  flex justify-between items-center px-10 border-b border-black'>
+      <nav className=' bg-[#cc313d] h-[60px] tab:h-[70px] w-full sticky top-0  z-30  flex justify-between items-center px-10 border-b-2 border-black'>
         
         <Link to={'/'}>
           <div className="logo ">
@@ -18,12 +18,12 @@ export default function Navbar() {
           </div>
         </Link>
 
-        <div onClick={()=>setNavToggle(()=>!navToggle)} className='tab:hidden bg-black' >
+        <div onClick={()=>setNavToggle(()=>!navToggle)} className='tab:hidden bg-[#a8212a] p-2 rounded-md' >
          { 
          navToggle
             ?
           <div className="cross hover:cursor-pointer">
-            <svg className='h-6 w-6' fill="#ffffff"  version="1.1"    viewBox="0 0 490 490"  stroke="#ffffff"><g id="SVGRepo_bgCarrier" ></g><g id="SVGRepo_tracerCarrier" ></g><g id="SVGRepo_iconCarrier"> <polygon points="456.851,0 245,212.564 33.149,0 0.708,32.337 212.669,245.004 0.708,457.678 33.149,490 245,277.443 456.851,490 489.292,457.678 277.331,245.004 489.292,32.337 "></polygon> </g></svg>
+            <svg className='h-7 w-7' fill="#ffffff"  version="1.1"    viewBox="0 0 490 490"  stroke="#ffffff"><g id="SVGRepo_bgCarrier" ></g><g id="SVGRepo_tracerCarrier" ></g><g id="SVGRepo_iconCarrier"> <polygon points="456.851,0 245,212.564 33.149,0 0.708,32.337 212.669,245.004 0.708,457.678 33.149,490 245,277.443 456.851,490 489.292,457.678 277.331,245.004 489.292,32.337 "></polygon> </g></svg>
           </div>
             :
           <div className="hamBurger">
@@ -33,7 +33,7 @@ export default function Navbar() {
         </div>
 
         <div className="hidden tab:block navLinks text-4xl  ">
-          <ul className=' list-none flex gap-10 font-light'>
+          <ul className=' list-none flex gap-10 font-light text-white'>
             <li>About</li>
             <li>Contact</li>
             <li>Blogs</li>

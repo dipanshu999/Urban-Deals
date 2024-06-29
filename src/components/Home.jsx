@@ -3,11 +3,9 @@ import Dropdown from './DropDown'
 import Card from './Card'
 import { ProductContext } from '../Utils/Context'
 import { Link } from 'react-router-dom'
-import Loader from './Loader'
-
+import Loader from './Loader/Loader'
 export default function Home() {
   let [products,loading]=useContext(ProductContext)
-  console.log(products)
 
   return (
     <>
@@ -21,7 +19,7 @@ export default function Home() {
         </div>
 
 
-        <div className='card-container gap-12 xsm:w-[92vw] mob:gap-16 mx-auto flex flex-wrap  pt-6 justify-center'>
+        <div className='card-container gap-12 xsm:w-[92vw] lap:w-[88vw] mob:gap-16 mx-auto flex flex-wrap  pt-6 justify-center'>
            {
              products.map(item=> <Link key={item.id} to={`/product/${item.id}`}> <Card item={item} /></Link>)
            }

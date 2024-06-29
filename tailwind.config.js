@@ -12,6 +12,9 @@ export default {
         'tab':'800px',
         'lap':'1000px'
       },
+      boxShadow:{
+        'shadows':'10px 10px 5px black'
+      }
     },
   },
   plugins: [],

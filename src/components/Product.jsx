@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import axiosInstance from '../Utils/axiosInstance'
+import Loader from './Loader/Loader';
 
 
 
@@ -27,7 +28,7 @@ export default function Product() {
   },[])
 
   if (!product) {
-    return <div>Loading...</div>;
+    return <Loader></Loader>;
   }
 
   function truncateText(text, wordLimit) {
@@ -44,7 +45,7 @@ export default function Product() {
  
   return (
     <>
-      <div className=' flex flex-col gap-5 mob:w-[80vw] mob:mt-16 py-12 my-4 tab:w-[80vw] tab:min-h-[70vh] tab:flex-row tab:gap-20 lap:w-[70vw] shadow-2xl rounded-2xl mx-auto mt-10  justify-center items-center  '>
+      <div className='bg-white flex flex-col gap-5 mob:w-[80vw] mob:mt-16 py-12 my-4 tab:w-[80vw] tab:min-h-[70vh] tab:flex-row tab:gap-20 lap:w-[70vw] shadow-2xl rounded-2xl mx-auto mt-10  justify-center items-center  '>
         
         <div className="pic h-[12em] mob:h-[16em] tab:ml-2 " >
           <img src={image} className='h-full object-contain ' alt={category} />
@@ -69,8 +70,8 @@ export default function Product() {
           </div>
 
           <div className="btn flex gap-4">
-            <button className='border-2 border-green-300 px-4 xsm:py-1 lap:py-2  rounded-xl '>Edit</button>
-            <button className='border-2 border-red-300   px-4 xsm:py-1 lap:py-2  rounded-xl '>Delete</button>
+            <button className='border-2 border-green-400 px-4 xsm:py-1 lap:py-2  rounded-xl '>Edit</button>
+            <button className='border-2 border-red-400   px-4 xsm:py-1 lap:py-2  rounded-xl '>Delete</button>
           </div>
         </div>
 
