@@ -10,7 +10,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className=' bg-[#cc313d] h-[60px] tab:h-[70px] w-full sticky top-0  z-30  flex justify-between items-center px-10 border-b-2 border-black'>
+      <nav className=' bg-[#7a5dd8] h-[60px] tab:h-[70px] w-full sticky top-0 z-30 flex justify-between items-center px-10 border-b-2 border-black'>
         
         <Link to={'/'}>
           <div className="logo ">
@@ -33,7 +33,7 @@ export default function Navbar() {
         </div>
 
         <div className="hidden tab:block navLinks text-4xl  ">
-          <ul className=' list-none flex gap-10 font-light text-white'>
+          <ul className=' list-none flex gap-10 font-normal text-white'>
             <li>About</li>
             <li>Contact</li>
             <li>Blogs</li>

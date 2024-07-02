@@ -5,7 +5,7 @@ export const ProductContext= createContext()
 export default function Context(props) {
     const [products,setProducts]= useState([]);
     const [copyProducts,setCopyProducts]= useState([]);
-    const [loading,setLoading]=useState(true)
+    const [loading,setLoading]=useState(false)
     const[navToggle,setNavToggle]= useState(false);
 
   

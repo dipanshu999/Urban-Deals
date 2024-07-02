@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { ProductContext } from '../Utils/Context';
+import { Link } from 'react-router-dom';
 
 export default function DropDown() {
 
@@ -7,6 +8,10 @@ export default function DropDown() {
 
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState('Filter');
+  
+ let specific=copyProducts.map((item)=>item.category);
+ specific=[...new Set(specific)]
+ console.log(specific)
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -19,13 +24,14 @@ export default function DropDown() {
 
  
   const filterProducts=(category)=>{
+    
     category?
       setProducts(copyProducts.filter(item=>item.category === category))
     :
       setProducts(copyProducts)
   }
 
-  const handleSelectAndFilter = (item, category) => {
+  const handleSelectAndFilter = (item,category) => {
     handleSelect(item);
     filterProducts(category);
   };
@@ -36,7 +42,7 @@ export default function DropDown() {
       <div >
         <button 
           type="button"
-          className="inline-flex w-40 justify-center gap-x-1.5 rounded-md bg-blue-500 px-3 py-2 text-xl font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-500 hover:shadow-lg"
+          className="inline-flex w-40 justify-center gap-x-1.5 rounded-md bg-[#F3EBFF] px-3 py-2 text-xl font-semibold text-[#49387c] shadow-sm ring-1 ring-inset ring-gray-500 hover:shadow-lg"
           id="menu-button"
           aria-expanded={isOpen}
           aria-haspopup="true"
@@ -44,7 +50,7 @@ export default function DropDown() {
         >
           {selectedItem}
           <svg
-            className="ml-2 h-6 w-6  mt-1 text-white"
+            className="ml-2 h-6 w-6  mt-1 text-black"
             viewBox="0 0 20 20"
             fill="currentColor"
             aria-hidden="true"
@@ -66,61 +72,29 @@ export default function DropDown() {
           tabIndex={-1}
         >
           <div className='pt-2' role="none">
-            <a
-              href="#"
+            <Link
               className="block px-4 py-2 text-sm text-gray-700"
               role="menuitem"
               tabIndex={-1}
               id="menu-item-0"
-              onClick={() => handleSelectAndFilter("All section", null)}
+              onClick={() => handleSelectAndFilter("All section",null)}
             >
               All section
-            </a>
-            <a
-              href="#"
+            </Link>
+
+           { 
+            specific.map((item,index)=> <Link
+              key={index}
+              to={`/?category=${item}`}
               className="block px-4 py-2 text-sm text-gray-700"
               role="menuitem"
               tabIndex={-1}
-              id="menu-item-1"
-              onClick={() => handleSelectAndFilter("Men's", "men's clothing")}
-            >
-              Men's
-            </a>
-          </div>
-          <div className="" role="none">
-            <a
-              href="#"
-              className="block px-4 py-2 text-sm text-gray-700"
-              role="menuitem"
-              tabIndex={-1}
-              id="menu-item-2"
-              onClick={() =>handleSelectAndFilter("Women's", "women's clothing")}
-            >
-              Women's
-            </a>
-            <a
-              href="#"
-              className="block px-4 py-2 text-sm text-gray-700"
-              role="menuitem"
-              tabIndex={-1}
-              id="menu-item-3"
-              onClick={() => handleSelectAndFilter('Jwellery', 'jewelery')}
-            >
-              Jwellery
-            </a>
-          </div>
-          <div  role="none">
-           
-            <a
-              href="#"
-              className="block px-4 py-2 text-sm text-gray-700"
-              role="menuitem"
-              tabIndex={-1}
-              id="menu-item-5"
-              onClick={() => handleSelectAndFilter('Electronics','electronics')}
-            >
-              Electronics
-            </a>
+              id={`menu-item-${index + 1}`}
+              onClick={() => handleSelectAndFilter(item,item)}
+          >
+            {item}
+          </Link>)
+           }
           </div>
           
         </div>
