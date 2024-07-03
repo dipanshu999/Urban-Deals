@@ -26,8 +26,8 @@ export default function Home() {
         
         <div className=' card-container gap-12 xsm:w-[92vw] lap:w-[90%] mob:gap-12 lap:gap-16 mx-auto flex flex-wrap  pt-6 justify-center'>
            {
-             products.map(item=> <Link key={item.id} to={`/product/${item.id}`}> <Card item={item} /></Link>)
-            }
+             products.map(item=> <Link key={item.id} to={`/product/${item.id}`}><Card item={item} /></Link>)
+           }
         </div>
     
     </div>

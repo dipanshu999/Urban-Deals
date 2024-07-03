@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { ProductContext } from '../Utils/Context';
 import { Link } from 'react-router-dom';
 
@@ -11,7 +11,6 @@ export default function DropDown() {
   
  let specific=copyProducts.map((item)=>item.category);
  specific=[...new Set(specific)]
- console.log(specific)
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -19,22 +18,29 @@ export default function DropDown() {
 
   const handleSelect = (item) => {
     setSelectedItem(item);
+    
+    
     setIsOpen(false); // Close the dropdown menu
   };
 
  
   const filterProducts=(category)=>{
     
-    category?
+   category?
       setProducts(copyProducts.filter(item=>item.category === category))
-    :
+            :
       setProducts(copyProducts)
   }
 
-  const handleSelectAndFilter = (item,category) => {
-    handleSelect(item);
-    filterProducts(category);
-  };
+ 
+    const handleSelectAndFilter = (item,category) => {
+      let splitItem=item.split(" ");
+      splitItem=splitItem[0];
+      
+      handleSelect(splitItem);
+      filterProducts(category);
+    };
+  
 
 
   return (
@@ -92,7 +98,7 @@ export default function DropDown() {
               id={`menu-item-${index + 1}`}
               onClick={() => handleSelectAndFilter(item,item)}
           >
-            {item}
+            {isOpen?item: splitItem}
           </Link>)
            }
           </div>

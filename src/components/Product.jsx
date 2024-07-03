@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import axiosInstance from '../Utils/axiosInstance'
 import Loader from './Loader/Loader';
+import Back from './Back';
 
 
 
@@ -43,15 +44,22 @@ export default function Product() {
   const truncatedDescription = truncateText(description, 35);
   const truncatedTitle = truncateText(title, 7);
  
+  
+
   return (
-    <>
-      <div className='bg-white flex flex-col gap-5 mob:w-[80vw] mob:mt-16 py-12 my-4 tab:w-[80vw] tab:min-h-[70vh] tab:flex-row tab:gap-20 lap:w-[70vw] shadow-2xl rounded-2xl mx-auto mt-10  justify-center items-center  '>
-        
-        <div className="pic h-[12em] mob:h-[16em] tab:ml-2 " >
+    <div className='flex  flex-col tab:flex-row  items-center tab:px-4 lap:px-10'>
+     
+      <div className='mt-6' >
+        <Back/> 
+      </div>
+    
+      <div className='bg-white  w-[100vw] flex flex-col gap-5 mob:w-[80vw] mob:mt-16 py-12 my-4 tab:w-[80vw] tab:min-h-[70vh] tab:flex-row tab:gap-20 lap:w-[70vw] shadow-2xl rounded-2xl mx-auto mt-10  justify-center items-center  '>
+
+        <div className="pic  h-[12em]  mob:h-[16em] tab:ml-2 " >
           <img src={image} className='h-full object-contain ' alt={category} />
         </div>
-
-        <div className="detail  w-[20em] mt-4 xsm:w-[24em]  mob:w-[30em] tab:w-[35em] tab:items-start flex flex-col gap-5 justify-center   ">
+                
+        <div className="detail  w-[20em] mt-4 xsm:w-[24em] px-4 mob:px-0 mob:w-[30em] tab:w-[35em] tab:items-start flex flex-col gap-5 justify-center   ">
 
           <div className="title w-full">
             <p className='text-3xl  mob:text-4xl  tab:text-4xl lap:text-5xl font-semibold'>{truncatedTitle}</p>
@@ -76,6 +84,7 @@ export default function Product() {
         </div>
 
       </div>
-    </>
+   
+    </div>
   )
 }
