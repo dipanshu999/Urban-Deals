@@ -4,6 +4,7 @@ import Home from './components/Home'
 import 'react-router-dom'
 import { Route, Routes } from 'react-router-dom'
 import Product from './components/Product'
+import Create from './components/Create'
 
 
 export default function App() {
@@ -14,6 +15,7 @@ export default function App() {
       <Routes>
         <Route path='/' element={ <Home/>}/>
         <Route path='/product/:id' element={ <Product/>}/>
+        <Route path='/Create' element={ <Create/>}/>
       </Routes>
     </div>
     </>

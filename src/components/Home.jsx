@@ -19,7 +19,7 @@ export default function Home() {
       <div className=''>
 
         <div className='flex justify-center mt-10 gap-10 items-center '>
-          <input type="text" placeholder='Search' className='p-2 bg-gray-100 rounded-3xl border  border-black'/>
+          <Link to={'/Create'} className='border-2 border-black px-5 py-2'>Add</Link>
           <Dropdown products={products}/>
         </div>
 
