@@ -7,7 +7,7 @@ import Loader from './Loader/Loader'
 
 
 export default function Home() {
-  let [products,loading]=useContext(ProductContext)
+  let {products,loading}=useContext(ProductContext)
   const cat= useLocation()
  
   return (

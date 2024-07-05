@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export default function DropDown() {
 
-  const [products, loading, copyProducts, setProducts] = useContext(ProductContext);
+  const {products, loading, copyProducts, setProducts} = useContext(ProductContext);
 
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState('Filter');

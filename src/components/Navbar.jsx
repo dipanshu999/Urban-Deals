@@ -3,10 +3,7 @@ import { Link } from 'react-router-dom'
 import { ProductContext } from '../Utils/Context'
 
 export default function Navbar() {
-  const contextValues = useContext(ProductContext);
-  const navToggle = contextValues[5];
-  const setNavToggle = contextValues[4];
-  
+  const {navToggle,setNavToggle} = useContext(ProductContext);
 
   return (
     <>

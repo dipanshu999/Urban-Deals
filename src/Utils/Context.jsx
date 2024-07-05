@@ -32,7 +32,7 @@ export default function Context(props) {
     
 
   return (
-    <ProductContext.Provider value={[products,loading,copyProducts,setProducts,setNavToggle,navToggle]}>
+    <ProductContext.Provider value={{products,loading,copyProducts,setProducts,setNavToggle,navToggle}}>
         {props.children}
     </ProductContext.Provider>
   )

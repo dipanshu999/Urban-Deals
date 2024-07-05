@@ -47,7 +47,7 @@ export default function Product() {
   
 
   return (
-    <div className='flex  flex-col tab:flex-row  items-center tab:px-4 lap:px-10'>
+    <div className='flex  flex-col tab:flex-row  items-center tab:px-4 lap:px-20'>
      
       <div className='mt-6' >
         <Back/> 
