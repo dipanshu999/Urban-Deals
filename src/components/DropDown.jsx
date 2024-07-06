@@ -8,9 +8,15 @@ export default function DropDown() {
 
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState('Filter');
+  const [specific, setSpecific] = useState([]);
   
- let specific=copyProducts.map((item)=>item.category);
- specific=[...new Set(specific)]
+
+  useEffect(()=>{
+     let unique=copyProducts.map((item)=>item.category);
+     unique=[...new Set(unique)];
+     setSpecific(unique)
+  },[copyProducts])
+
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
