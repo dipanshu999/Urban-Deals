@@ -21,7 +21,8 @@ export default function Create() {
 
         if(title.trim().length<4 || description.trim().length<4 || price.trim().length<1 || image.trim().length<4 || category.trim().length<4 )
           {
-            alert('All fields must have 4 charachters at least')
+            alert('All fields must have 4 charachters at least');
+            return;
           }
 
        else{

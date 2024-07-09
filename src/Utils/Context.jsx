@@ -4,7 +4,6 @@ export const ProductContext= createContext()
 
 export default function Context(props) {
     const [products,setProducts]= useState([]);
-    const [copyProducts,setCopyProducts]= useState([]);
     const [loading,setLoading]=useState(false)
     const[navToggle,setNavToggle]= useState(false);
 
@@ -15,7 +14,6 @@ export default function Context(props) {
             setLoading(true)
             const {data}=  await axiosInstance.get('/products')
             setProducts(data);
-            setCopyProducts(data);
             setLoading(false)
             
         }
@@ -32,7 +30,7 @@ export default function Context(props) {
     
 
   return (
-    <ProductContext.Provider value={{copyProducts,products,setProducts,loading,setLoading, setNavToggle,navToggle}}>
+    <ProductContext.Provider value={{products,setProducts,loading,setLoading, setNavToggle,navToggle}}>
         {props.children}
     </ProductContext.Provider>
   )

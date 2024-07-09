@@ -1,35 +1,26 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import axiosInstance from '../Utils/axiosInstance'
 import Loader from './Loader/Loader';
 import Back from './Back';
+import { ProductContext } from '../Utils/Context';
 
 
 
 export default function Product() {
 
- 
+  let {products,setProducts}=useContext(ProductContext);
   const {id}= useParams()
   const[product,setProduct]=useState();
 
-  async function getSingleProduct(){
-
-    try{
-      const {data}=await axiosInstance.get(`/products/${id}`)
-      console.log(data)
-      setProduct(data)
-    }
-    catch(err){
-      console.log(err)
-    }
-  }
 
   useEffect(()=>{
-    getSingleProduct()
+   
+    setProduct(()=>products.filter(item=>item.id==id)[0])
+
   },[])
 
-  if (!product) {
-    return <Loader/>;
+  if(!product){
+    return <Loader/>
   }
 
   function truncateText(text, wordLimit) {
