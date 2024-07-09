@@ -7,8 +7,7 @@ import { useNavigate } from 'react-router-dom'
 
 export default function Create() {
 
-    let { setProducts, products, copyProducts,setCopyProducts }=useContext(ProductContext)    
-    console.log({ setProducts, copyProducts, setCopyProducts });
+    let { setProducts, products }=useContext(ProductContext)    
     const navigate = useNavigate()
 
     const [image, setImage] = useState('')
@@ -31,7 +30,7 @@ export default function Create() {
             };
           
             setProducts((prevProducts) => [...prevProducts, product]);
-            setCopyProducts((prevCopyProducts) => [...prevCopyProducts, product]);
+            // setCopyProducts((prevCopyProducts) => [...prevCopyProducts, product]);
              
         navigate('/')
         }

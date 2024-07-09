@@ -1,10 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState} from 'react';
 import { ProductContext } from '../Utils/Context';
 import { Link } from 'react-router-dom';
 
-export default function DropDown() {
 
-  const {products, loading, copyProducts, setProducts} = useContext(ProductContext);
+export default function DropDown({filterProducts}) {
+
+  const {setProducts,products, loading,copyProducts} = useContext(ProductContext);
 
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState('Filter');
@@ -12,10 +13,10 @@ export default function DropDown() {
   
 
   useEffect(()=>{
-     let unique=copyProducts.map((item)=>item.category);
+     let unique=products.map((item)=>item.category);
      unique=[...new Set(unique)];
      setSpecific(unique)
-  },[copyProducts])
+  },[products])
 
 
   const toggleDropdown = () => {
@@ -28,16 +29,6 @@ export default function DropDown() {
     
     setIsOpen(false); // Close the dropdown menu
   };
-
- 
-  const filterProducts=(category)=>{
-    
-   category?
-      setProducts(copyProducts.filter(item=>item.category === category))
-            :
-      setProducts(copyProducts)
-  }
-
  
     const handleSelectAndFilter = (item,category) => {
       let splitItem=item.split(" ");
@@ -45,6 +36,8 @@ export default function DropDown() {
       
       handleSelect(splitItem);
       filterProducts(category);
+      
+      
     };
   
 
@@ -77,7 +70,7 @@ export default function DropDown() {
       </div>
       {isOpen && (
         <div
-          className="absolute right-0 z-10 mt-2 w-56 origin-top-right  rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+          className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
           role="menu"
           aria-orientation="vertical"
           aria-labelledby="menu-button"
@@ -85,11 +78,12 @@ export default function DropDown() {
         >
           <div className='pt-2' role="none">
             <Link
+              to={'/'}
               className="block px-4 py-2 text-sm text-gray-700"
               role="menuitem"
               tabIndex={-1}
               id="menu-item-0"
-              onClick={() => handleSelectAndFilter("All section",null)}
+              onClick={() => handleSelectAndFilter("All section",undefined)}
             >
               All section
             </Link>

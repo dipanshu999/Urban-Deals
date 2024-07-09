@@ -8,7 +8,7 @@ export default function Context(props) {
     const [loading,setLoading]=useState(false)
     const[navToggle,setNavToggle]= useState(false);
 
-  
+    
 
     const getData= async()=>{
         try{
@@ -32,7 +32,7 @@ export default function Context(props) {
     
 
   return (
-    <ProductContext.Provider value={{products,loading,copyProducts,setProducts,setNavToggle,navToggle}}>
+    <ProductContext.Provider value={{copyProducts,products,setProducts,loading,setLoading, setNavToggle,navToggle}}>
         {props.children}
     </ProductContext.Provider>
   )

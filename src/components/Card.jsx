@@ -3,7 +3,7 @@ import React from 'react'
 export default function Card({item}) {
     const {image,title}=item;
     function truncateText(text, wordLimit) {
-      const words = text.split(' ');
+      const words=text.split(' ');
       if (words.length <= wordLimit) {
         return text;
       }
