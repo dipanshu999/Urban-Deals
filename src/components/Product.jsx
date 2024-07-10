@@ -5,8 +5,8 @@ import Back from './Back';
 import { ProductContext } from '../Utils/Context';
 
 
-
 export default function Product() {
+const navigate=useNavigate()
 
   let {products,setProducts}=useContext(ProductContext);
   const {id}= useParams()
@@ -31,6 +31,15 @@ export default function Product() {
     return words.slice(0, wordLimit).join(' ') + ' ...';
   }
  
+
+
+  let deleteItem=(id)=>{
+    const FilteredProducts=products.filter(item=>item.id !==id);
+    setProducts(FilteredProducts);
+    localStorage.setItem('products',JSON.stringify(FilteredProducts))
+    navigate('/');
+  }
+
   const{title,description,category,image,price}=product;
   const truncatedDescription = truncateText(description, 35);
   const truncatedTitle = truncateText(title, 7);
@@ -70,7 +79,7 @@ export default function Product() {
 
           <div className="btn flex gap-4">
             <button className='border-2 border-green-400 px-4 xsm:py-1 lap:py-2  rounded-xl '>Edit</button>
-            <button className='border-2 border-red-400   px-4 xsm:py-1 lap:py-2  rounded-xl '>Delete</button>
+            <button onClick={()=>deleteItem(product.id)} className='border-2 border-red-400   px-4 xsm:py-1 lap:py-2  rounded-xl '>Delete</button>
           </div>
         </div>
 

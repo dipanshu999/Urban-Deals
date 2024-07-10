@@ -33,15 +33,12 @@ export default function Home() {
     try{
        if(category && category!=='All section'){
       
-      const {data}=await Axios.get(`/products/category/${category}`)
-      setFilteredProducts(data)
-
-     
+      // const {data}=await Axios.get(`/products/category/${category}`)
+      setFilteredProducts(products.filter(item=>item.category == category))
       }
+
     else
-   
       setFilteredProducts(products)
-    
     }catch(err){
     setLoading(false)
     console.log(err)

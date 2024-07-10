@@ -32,7 +32,7 @@ export default function Create() {
           
             setProducts((prevProducts) => [...prevProducts, product]);
             // setCopyProducts((prevCopyProducts) => [...prevCopyProducts, product]);
-             
+            localStorage.setItem('products', JSON.stringify([...products,product]))
         navigate('/')
         }
         
