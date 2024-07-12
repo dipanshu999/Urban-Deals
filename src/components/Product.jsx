@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import Loader from './Loader/Loader';
 import Back from './Back';
 import { ProductContext } from '../Utils/Context';
@@ -78,8 +78,8 @@ const navigate=useNavigate()
           </div>
 
           <div className="btn flex gap-4">
-            <button className='border-2 border-green-400 px-4 xsm:py-1 lap:py-2  rounded-xl '>Edit</button>
-            <button onClick={()=>deleteItem(product.id)} className='border-2 border-red-400   px-4 xsm:py-1 lap:py-2  rounded-xl '>Delete</button>
+            <Link to={`/edit/${product.id}`} className='border-2 border-green-400 px-4 xsm:py-1 lap:py-2  rounded-xl '>Edit</Link>
+            <button onClick={()=>deleteItem(id)} className='border-2 border-red-400   px-4 xsm:py-1 lap:py-2  rounded-xl '>Delete</button>
           </div>
         </div>
 

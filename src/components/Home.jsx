@@ -61,7 +61,7 @@ export default function Home() {
       
 
         <div className='flex justify-center mt-10 gap-10 items-center '>
-          <Link to={'/Create'} className='border-2 border-black px-5 py-2'>Add</Link>
+          <Link to={'/create'} className='border-2 border-black px-5 py-2'>Add</Link>
           <Dropdown filterProducts={filterProducts}/>
         </div>
 
