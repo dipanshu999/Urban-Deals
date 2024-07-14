@@ -11,37 +11,56 @@ export default function Edit() {
     let { setProducts, products }=useContext(ProductContext)    
     const navigate = useNavigate()
 
-    const [image, setImage] = useState('')
-    const [title, setTitle] = useState('')
-    const [price, setPrice] = useState('')
-    const [category, setCategory] = useState('')
-    const [description, setDescription] = useState('')
+    const[product,setProduct]=useState({
+      title:'',
+      description:'',
+      image:'',
+      price:'',
+      category:''
+    });
+
+    function changeHandler(e){
+        console.log(e.target.value)
+        setProduct({...product, [e.target.name]:e.target.value})
+    }
+
+    useEffect(()=>{
+      setProduct(products.filter((item)=>item.id == id)[0])
+      console.log(product)
+    },[])
+
+
 
     let handleSubmit=(e)=>{
       e.preventDefault();
 
-        if(title.trim().length<4 || description.trim().length<4 || price.trim().length<1 || image.trim().length<4 || category.trim().length<4 )
+        if(
+            product.title.trim().length<4 || 
+            product.description.trim().length<4 || 
+            product.price.trim().length<1 ||
+            product.image.trim().length<4 ||
+            product.category.trim().length<4 
+          )
           {
             alert('All fields must have 4 charachters at least');
             return;
           }
 
        else{
-        const product={
-          id:nanoid(),title,price,category,image,description
-            };
+            const pIndex=products.findIndex(item=>item.id==id)
+            console.log(product,pIndex);
           
-            setProducts((prevProducts) => [...prevProducts, product]);
-            // setCopyProducts((prevCopyProducts) => [...prevCopyProducts, product]);
-            localStorage.setItem('products', JSON.stringify([...products,product]))
-        navigate('/')
+            const copyData=[...products];
+            copyData[pIndex]={...products[pIndex],...product};
+            setProducts(copyData);
+            
+            localStorage.setItem('products', JSON.stringify(copyData))
+            navigate(-1)
         }
         
     }
 
-    useEffect(()=>{
-      console.log(products)
-    },[products])
+  
 
 
   return (
@@ -50,16 +69,16 @@ export default function Edit() {
 
         <form action="" className='flex flex-col gap-4'>
 
-            <input type="text" placeholder='Title' onChange={(e)=>setTitle(e.target.value)} value={title} className='border-2 p-2 border-slate-500 rounded-md'/>
+            <input type="text" placeholder='Title' name='title' onChange={changeHandler} value={product&&product.title} className='border-2 p-2 border-slate-500 rounded-md'/>
 
-            <input type="url" placeholder='Image URL' onChange={(e)=>setImage(e.target.value)} value={image} className='border-2 p-2 border-slate-500 rounded-md'/>
+            <input type="url" placeholder='Image URL' name='image' onChange={changeHandler} value={product&&product.image} className='border-2 p-2 border-slate-500 rounded-md'/>
 
                 <div className="price-desc flex flex-col tab:flex-row justify-between gap-4">
-                    <input type="number" placeholder='Price' onChange={(e)=>setPrice(e.target.value)} value={price} className='border-2  p-2 border-slate-500 rounded-md' />
-                    <input type="text " placeholder='Category' onChange={(e)=>setCategory(e.target.value)} value={category} className='border-2 p-2 flex-1 border-slate-500 rounded-md' />
+                    <input type="number" name='price'  placeholder='Price' onChange={changeHandler} value={product&&product.price} className='border-2  p-2 border-slate-500 rounded-md' />
+                    <input type="text "  name='category' placeholder='Category' onChange={changeHandler} value={product&&product.category} className='border-2 p-2 flex-1 border-slate-500 rounded-md' />
                 </div>
 
-            <textarea placeholder='Description' onChange={(e)=>setDescription(e.target.value)} value={description} className=' border-2 p-2 h-28 border-slate-500 rounded-md'></textarea>
+            <textarea placeholder='Description' name='description' onChange={changeHandler} value={product&&product.description} className=' border-2 p-2 h-28 border-slate-500 rounded-md'></textarea>
 
             <input type="submit" onClick={handleSubmit} className='bg-black hover:cursor-pointer text-white w-24 py-3 rounded-xl font-medium mx-auto text-xl'/>
         </form>
