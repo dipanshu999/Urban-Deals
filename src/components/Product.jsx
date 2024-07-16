@@ -3,6 +3,8 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import Loader from './Loader/Loader';
 import Back from './Back';
 import { ProductContext } from '../Utils/Context';
+import { db } from '../firebase';
+import { doc, deleteDoc } from 'firebase/firestore';
 
 
 export default function Product() {
@@ -33,12 +35,16 @@ const navigate=useNavigate()
  
 
 
-  let deleteItem=(id)=>{
-    const FilteredProducts=products.filter(item=>item.id !==id);
-    setProducts(FilteredProducts);
-    localStorage.setItem('products',JSON.stringify(FilteredProducts))
-    navigate('/');
-  }
+  const deleteItem = async (id) => {
+    try {
+      await deleteDoc(doc(db, 'products', id));
+      const FilteredProducts = products.filter(item => item.id !== id);
+      setProducts(FilteredProducts);
+      navigate('/');
+    } catch (error) {
+      console.error('Error deleting product:', error);
+    }
+  };
 
   const{title,description,category,image,price}=product;
   const truncatedDescription = truncateText(description, 35);
