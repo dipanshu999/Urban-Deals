@@ -1,9 +1,8 @@
-import axiosInstance from './axiosInstance';
 import React, { createContext, useEffect, useState } from 'react';
-export const ProductContext = createContext();
+import Axios from '../Utils/axiosInstance';
+import { getLocalStorage, setLocalStorage } from './localStorage';
 
-import { db } from '../firebase';
-import { collection, getDocs, writeBatch, doc } from 'firebase/firestore';
+export const ProductContext = createContext();
 
 export default function Context(props) {
   const [products, setProducts] = useState([]);
@@ -12,46 +11,40 @@ export default function Context(props) {
   const [darkMode, setDarkMode] = useState(false);
 
   function setMode() {
-    setDarkMode((prev) => !prev);
+    setDarkMode(prev => !prev);
   }
 
-  const fetchAndSaveData = async () => {
-    try {
-      setLoading(true);
-      console.log("Fetching documents from Firestore...");
-      const querySnapshot = await getDocs(collection(db, 'products'));
-      if (querySnapshot.empty) {
-        console.log("Firestore is empty. Fetching data from FakeStoreAPI...");
-        const response = await axiosInstance.get('/products');
-        const data = response.data;
-
-        const batch = writeBatch(db);
-        data.forEach((product) => {
-          const productRef = doc(collection(db, 'products'));
-          batch.set(productRef, product);
-        });
-
-        console.log("Committing batch...");
-        await batch.commit();
-        console.log("Batch committed.");
-
-        const newQuerySnapshot = await getDocs(collection(db, 'products'));
-        const productsData = newQuerySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-        setProducts(productsData);
-      } else {
-        console.log("Firestore is not empty. Loading existing data...");
-        const productsData = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-        setProducts(productsData);
-      }
-      setLoading(false);
-    } catch (err) {
-      setLoading(false);
-      console.error('Error fetching or saving data:', err);
-    }
-  };
-
   useEffect(() => {
-    fetchAndSaveData();
+    const fetchProducts = async () => {
+      setLoading(true);
+
+      // Check if there are products in local storage
+      const storedProducts = getLocalStorage('products');
+
+      if (storedProducts) {
+        setProducts(storedProducts);
+        setLoading(false);
+        return;
+      }
+
+      // Fetch products from Fake Store API if not found in local storage
+      try {
+        const response = await Axios.get('/products');
+        const fetchedProducts = response.data;
+
+        // Store fetched products in local storage
+        setLocalStorage('products', fetchedProducts);
+
+        // Update local state with the fetched products
+        setProducts(fetchedProducts);
+      } catch (fetchError) {
+        console.error('Error fetching from Fake Store API:', fetchError);
+      }
+
+      setLoading(false);
+    };
+
+    fetchProducts();
   }, []);
 
   return (
