@@ -9,7 +9,7 @@ export default function Card({item}) {
       }
       return words.slice(0, wordLimit).join(' ') + ' ...';
     }
-    const truncatedTitle = truncateText(title, 7);
+    const truncatedTitle = truncateText(title, 6);
 
   return (
     <>

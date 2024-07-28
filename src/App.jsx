@@ -8,10 +8,11 @@ import Create from './components/Create'
 import Edit from './components/Edit'
 
 
+
 export default function App() {
   return (
     <>
-    <div className=' max-w-[1400px] w-full mx-auto' >
+    <div className={`max-w-[1400px] w-full mx-auto  ` } >
       <Navbar/>
       <Routes>
         <Route path='/' element={ <Home/>}/>

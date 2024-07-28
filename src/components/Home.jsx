@@ -6,7 +6,7 @@ import { Link, useLocation } from 'react-router-dom';
 import Loader from './Loader/Loader';
 
 export default function Home() {
-  const { products, loading, setLoading } = useContext(ProductContext);
+  const { products, loading, setLoading,navToggle } = useContext(ProductContext);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const { search } = useLocation();
   const category = decodeURIComponent(search.split('=')[1]);
@@ -39,7 +39,7 @@ export default function Home() {
   }, [filteredProducts]);
 
   return (
-    <>
+    <div className={`${navToggle&&'blur-[8px]'}`}>
       {loading ? (
         <Loader />
       ) : (
@@ -58,6 +58,6 @@ export default function Home() {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
