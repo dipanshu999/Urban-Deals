@@ -7,7 +7,7 @@ export default function Back() {
   return (
     <>
       <div className="btn h-12 w-12 mob:h-16 mob:w-16">
-        <button onClick={()=>navigate(-1)} > <img src='../public/back.png' alt="" /> </button>
+        <button onClick={()=>navigate(-1)} > <img src='../back.png' alt="" /> </button>
       </div>
     </>
   )
