@@ -3,6 +3,7 @@ import { nanoid } from 'nanoid';
 import { ProductContext } from '../Utils/Context';
 import { useNavigate } from 'react-router-dom';
 import Loader from './Loader/Loader';
+import { toast } from 'react-toastify';
 
 export default function Create() {
   const { products, setProducts } = useContext(ProductContext);
@@ -19,7 +20,7 @@ export default function Create() {
     e.preventDefault();
 
     if (title.trim().length < 4 || description.trim().length < 4 || price.trim().length < 1 || image.trim().length < 4 || category.trim().length < 4) {
-      alert('All fields must have 4 characters at least.');
+      toast.warn('Input must be 4 characters at least.');
       return;
     }
 
@@ -44,6 +45,7 @@ export default function Create() {
 
       // Navigate back to home page after successful submission
       navigate('/');
+      toast.success('Product added successfully')
     } catch (error) {
       console.error('Error saving product:', error);
     } finally {

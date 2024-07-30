@@ -39,17 +39,17 @@ export default function Home() {
   }, [filteredProducts]);
 
   return (
-    <div className={`${navToggle&&'blur-[8px]'}`}>
+    <div className={`${navToggle &&'blur-[8px]'}`}>
       {loading ? (
         <Loader />
       ) : (
         <div className='mb-8'>
           <div className='flex justify-center mt-10 gap-10 items-center '>
-            <Link to={'/create'} className='border-2 border-black px-5 py-2'>Add</Link>
+            <Link to={'/create'} className='text-white bg-black px-5 py-2'>Add</Link>
             <Dropdown filterProducts={filterProducts} />
           </div>
 
-          <div className='card-container gap-12 xsm:w-[92vw] lap:w-[90%] mob:gap-12 lap:gap-16 mx-auto flex flex-wrap pt-6 justify-center'>
+          <div className='card-container gap-6 xsm:w-[92vw] xsm:gap-12 lap:w-[90%] mob:gap-12 lap:gap-16 mx-auto flex flex-wrap pt-6 justify-center'>
             {filteredProducts.map(item => (
               <Link key={item.id} to={`/product/${item.id}`}>
                 <Card item={item} />

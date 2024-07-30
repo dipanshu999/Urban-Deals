@@ -13,7 +13,7 @@ export default function Card({item}) {
 
   return (
     <>
-        <div className="bg-white card h-[12em] w-[8em] xsm:h-[14em] xsm:w-[9.78em] mob:h-[14em] mob:w-[10.5em] lap:h-[16em] lap:w-[12em] border border-black shadows rounded-xl overflow-hidden"> 
+        <div className="bg-white card h-[14em] w-[9.2em] xsm:h-[14em] xsm:w-[9.78em] mob:h-[14em] mob:w-[10.5em] lap:h-[16em] lap:w-[12em] border border-black shadows rounded-xl overflow-hidden"> 
             <div className='h-[70%] p-2'>
               <img src={image} className='h-full  m-auto bg-contain' />
             </div>

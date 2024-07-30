@@ -4,6 +4,8 @@ import Loader from './Loader/Loader';
 import Back from './Back';
 import { ProductContext } from '../Utils/Context';
 import { getLocalStorage, setLocalStorage } from '../Utils/localStorage';  // Import local storage utility functions
+import { toast } from 'react-toastify';
+
 
 export default function Product() {
   const navigate = useNavigate();
@@ -46,6 +48,7 @@ export default function Product() {
     // Update local storage
     localStorage.setItem('products', JSON.stringify(updatedProducts));
 
+    toast.success('Product deleted successfully')
     navigate('/');
   };
 
@@ -66,8 +69,8 @@ export default function Product() {
         </div>
 
         <div className="detail w-[23em] mt-4 xsm:w-[25em] px-4 mob:px-0 mob:w-[30em] tab:w-[35em] tab:items-start flex flex-col gap-5 justify-center">
-          <div className="title w-full border">
-            <p className='text-4xl lap:text-5xl font-semibold'>{truncatedTitle}</p>
+          <div className="title w-full">
+            <p className='text-4xl lap:text-5xl font-semibold mob:font-medium'>{truncatedTitle}</p>
           </div>
           <div className="category">
             <p className='text-slate-500 text-sm tab:text-md'>{category}</p>
