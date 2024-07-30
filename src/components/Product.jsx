@@ -15,17 +15,9 @@ export default function Product() {
 
   useEffect(() => {
     // Check for the product in the context first
-    let foundProduct = products.find(item => item.id == id);
-
-    if (!foundProduct) {
-      // If not found in the context, check local storage
-      const storedProducts = getLocalStorage('products');
-      if (storedProducts) {
-        foundProduct = storedProducts.find(item => item.id == id);
-      }
-    }
-
-    setProduct(foundProduct);
+    let foundProduct = products.filter(item => item.id == id)[0];
+    setProduct(foundProduct)
+   
   }, [id, products]);
 
   if (!product) {
