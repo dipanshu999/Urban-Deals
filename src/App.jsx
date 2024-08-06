@@ -6,6 +6,7 @@ import { Route, Routes } from 'react-router-dom'
 import Product from './components/Product'
 import Create from './components/Create'
 import Edit from './components/Edit'
+import Cart from './components/Cart'
 
 
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
         <Route path='/product/:id' element={ <Product/>}/>
         <Route path='/edit/:id' element={ <Edit/>}/>
         <Route path='/create' element={ <Create/>}/>
+        <Route path='/cart' element={ <Cart/>}/>
       </Routes>
     </div>
     </>

@@ -34,9 +34,6 @@ export default function Home() {
     }
   }
 
-  useEffect(() => {
-    console.log(filteredProducts);
-  }, [filteredProducts]);
 
   return (
     <div className={`${navToggle &&'blur-[8px]'}`}>

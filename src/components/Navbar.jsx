@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { ProductContext } from '../Utils/Context'
 
 import Mode from './Mode'
@@ -35,9 +35,9 @@ export default function Navbar() {
         <div className={` ${navToggle?'absolute':'hidden'} right-0 mt-[9.2em] tab:m-0  tab:static tab:block navLinks text-4xl `} >
           <div className=' list-none  bg-black  gap-6 rounded-md p-6 px-12 mob:px-24 flex flex-col tab:m-0 tab:p-0 tab:bg-none tab:flex-row tab:gap-10 font-normal text-white'>
             <Mode setMode={setMode} />
-            <li>About</li>
-            <li>Contact</li>
-            <li>Blogs</li>
+            <NavLink to={'/'}>About</NavLink>
+            <NavLink to={'/cart'}>Cart</NavLink>
+            <NavLink to={'/'}>Blogs</NavLink>
           </div>
         </div>
 

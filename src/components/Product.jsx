@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 
 export default function Product() {
   const navigate = useNavigate();
-  let { products, setProducts } = useContext(ProductContext);
+  let { products, setProducts, cartHandle } = useContext(ProductContext);
   const { id } = useParams();
   const [product, setProduct] = useState();
 
@@ -67,18 +67,26 @@ export default function Product() {
           <div className="category">
             <p className='text-slate-500 text-sm tab:text-md'>{category}</p>
           </div>
-          <div className="price">
+
+          <div className="price flex gap-10 items-center ">
             <p className='text-orange-600 text-[2.6rem] font-semibold'>${price}</p>
+            <button onClick={()=>cartHandle(product.id)} className='bg-yellow-400 text-xl h-11 font-semibold rounded-md px-3'>Add to cart</button>
           </div>
+
           <div className="w-[98%] description leading-4 min-h-18 text-blue-950">
             <p className='text-sm opacity-70'>{truncatedDescription}</p>
           </div>
+
           <div className="btn flex gap-4">
             <Link to={`/edit/${product.id}`} className='border-2 border-green-400 px-4  py-2 rounded-xl'>Edit</Link>
             <button onClick={() => deleteItem(product.id)} className='border-2 border-red-400 px-4  py-2 rounded-xl'>Delete</button>
           </div>
-        </div>
+
+        </div>  
       </div>
+            <div className="goto-cart absolute w-16 right-0 mr-60">
+              <button onClick={()=>navigate('/cart')} className='bg-black text-white absolute '>Go to cart</button>
+            </div>
     </div>
   );
 }
