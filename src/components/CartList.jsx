@@ -38,22 +38,27 @@ export default function CartList({ item }) {
 
    return (
     
-    <div className='w-[80%] p-3 border mx-auto flex gap-4 items-center justify-between'>
-      <div className="product-desc flex items-center gap-4">
-        <div className='image border border-green-300 w-24 h-20'>
-          <img src={item.image} alt="" className='h-full m-auto' />
+    <div className='w-[95%] p-5 border  mx-auto flex gap-4 items-center justify-between rounded-xl shadow-md'>
+      
+      <div className="product-desc flex justify-between items-center gap-4">
+
+        <div className='image  rounded-md w-28 h-24 '>
+          <img src={item.image} alt="" className='h-full w-full object-contain m-auto' />
         </div>
-        <div>
-          <p>{truncatedTitle}</p>
-          <p>${item.price }</p> {/* Display the total price for this item */}
+
+        <div className='flex flex-col gap-6  w-[80%] '>
+          <p className='text-orange-500 text-2xl  leading-5'>{truncatedTitle}</p>
+          <p className='text-slate-500 text-xl'>${item.price }</p> {/* Display the total price for this item */}
         </div>
       </div>
-      <div className="add-btn flex gap-1">
-        <button onClick={() => handleDecrement(item.id)} className='bg-red-500 px-2 text-white font-bold rounded-md text-center'>
+
+
+      <div className="add-btn flex items-center gap-2">
+        <button  onClick={() => handleDecrement(item.id)} className='bg-red-500 px-3 py-1 text-white font-bold rounded-md text-center'>
           -
         </button>
-        <p>{count}</p>
-        <button onClick={() => handleIncrement(item.id)} className='bg-green-500 px-2 text-white font-bold rounded-md'>
+        <p className='font-semibold text-xl'>{count}</p>
+        <button onClick={() => handleIncrement(item.id)} className='bg-green-500 px-3 py-1 text-white font-bold rounded-md'>
           +
         </button>
       </div>

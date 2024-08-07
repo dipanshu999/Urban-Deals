@@ -76,7 +76,7 @@ export default function DropDown({filterProducts}) {
           aria-labelledby="menu-button"
           tabIndex={-1}
         >
-          <div className='pt-2' role="none">
+          <div  className='pt-2' role="none">
             <Link
               to={'/'}
               className="block px-4 py-2 text-sm text-gray-700"
@@ -85,8 +85,8 @@ export default function DropDown({filterProducts}) {
               id="menu-item-0"
               onClick={() => handleSelectAndFilter("All section",undefined)}
             >
-              All section
-            </Link>
+              <span className='text-xl'>All section</span>
+            </Link >
 
            { 
             specific.map((item,index)=> <Link
@@ -98,7 +98,7 @@ export default function DropDown({filterProducts}) {
               id={`menu-item-${index + 1}`}
               onClick={() => handleSelectAndFilter(item,item)}
           >
-            {isOpen?item: splitItem}
+            <span className='text-xl'>{isOpen?item: splitItem}</span>
           </Link>)
            }
           </div>
