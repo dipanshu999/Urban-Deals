@@ -27,7 +27,7 @@ export default function CartList({ item }) {
     ));
   };
 
-  const truncatedTitle = truncateText(item.title, 7);
+  const truncatedTitle = truncateText(item.title, 6);
   function truncateText(text, wordLimit) {
     const words = text.split(' ');
     if (words.length <= wordLimit) {
@@ -38,16 +38,16 @@ export default function CartList({ item }) {
 
    return (
     
-    <div className='w-[95%] p-5 border  mx-auto flex gap-4 items-center justify-between rounded-xl shadow-md'>
+    <div className= ' mob:w-[87%] mx-auto tab:w-[95%] p-4 border flex gap-4 items-center justify-between rounded-xl shadow-md'>
       
       <div className="product-desc flex justify-between items-center gap-4">
 
-        <div className='image  rounded-md w-28 h-24 '>
+        <div className='image  rounded-md w-28 h-24 border'>
           <img src={item.image} alt="" className='h-full w-full object-contain m-auto' />
         </div>
 
         <div className='flex flex-col gap-6  w-[80%] '>
-          <p className='text-orange-500 text-2xl  leading-5'>{truncatedTitle}</p>
+          <p className='text-orange-500 text-[1.4rem] lap:text-2xl leading-6 lap:leading-[1.45rem] font-[450]'>{truncatedTitle}</p>
           <p className='text-slate-500 text-xl'>${item.price }</p> {/* Display the total price for this item */}
         </div>
       </div>

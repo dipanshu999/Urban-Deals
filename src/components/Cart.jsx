@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { ProductContext } from '../Utils/Context';
 import CartList from './CartList';
 import { useNavigate } from 'react-router-dom';
+import Back from './Back'
 
 export default function Cart() {
   let { cartProducts ,setCartProducts} = useContext(ProductContext);
@@ -38,27 +39,28 @@ export default function Cart() {
           <p className='text-5xl text-center font-semibold'>You cart is empty !!</p>
           <div className='flex justify-center'><button onClick={()=>navigate('/')} className='bg-green-500 p-4 text-xl text-white font-semibold rounded-xl mt-8'>Add products</button></div>
         </>
-       :
+       :   //  ABove is empty cart
 
-      <div className='flex justify-center mt-6 p-4 pr-20'>
-          <div className='w-[50em]  mx-auto p-4 flex flex-col gap-4'>
+       <div className='flex flex-col  justify-center mob:items-center tab:mt-6 pr-4 pl-4 tab:flex-row lap:pr-8'>
+        <div className='mt-4 tab:hidden'><Back  /></div>
+          <div className='tab:w-[750px]   p-4 flex flex-col gap-4'>
             {cartProducts.map(item => <CartList key={item.id} item={item} />)}
           </div>
 
-          <div className="billing w-[20em] h-[22em] rounded-xl shadow-xl mob:mt-10  border flex flex-col">
-
-              <p className="text-4xl text-center font-semibold p-2">Billing section</p>
+          {/* Billing section  */}
+          <div className="billing bg-white fixed bottom-0 mob:w-[70%] tab:w-[22em] tab:h-[20em] tab:static rounded-xl shadow-xl tab:mt-10  border flex flex-col">
+              <p className=" hidden tab:block text-3xl text-red-500 text-center font-semibold p-2">Billing section</p>
             
-            <div className="check-out  w-[80%] text-[1.1em] mx-auto mt-4 bg-[#fff7f7] p-2">
+            <div className="check-out  w-[85%] text-[1.1em] mx-auto mt-4 bg-[#fff7f7] ">
               <p className='flex justify-between'><span className='font-semibold'>Total:</span>             <span className='text-green-600'>${totalPrice}</span></p>
               <p className='flex justify-between'><span className='font-semibold'>Taxes & charges:</span>   <span className='text-green-600'> $ {taxation}</span></p>
               <p className='flex justify-between'><span className='font-semibold'>Delivery charges:</span>  <span className='text-green-600'> $ {delivery}</span></p>
                 <hr className='border border-slate-400' />
               <p className='flex justify-between'><span className='font-semibold'>To Pay:</span>            <span className='font-semibold text-red-500'>  ${toPay}   </span></p>
-              <div className='flex justify-center'><button className='bg-green-500 text-white py-2 px-14 mt-4 text-xl font-semibold'>Checkout</button></div>
+              <div className='flex justify-center mt-2'><button className='bg-green-500 text-white py-2 px-14 mt-4 text-xl font-semibold'>Checkout</button></div>
             </div>
 
-            <div className='flex justify-center mt-2 gap-4'>
+            <div className='flex justify-center mt-4 gap-4'>
                 <button onClick={()=>navigate('/')} className='bg-green-100 p-2 rounded-md '>Order more</button>
                 <button onClick={clearCart} className='bg-red-200 p-2 rounded-md '>Clear cart</button>
             </div>
