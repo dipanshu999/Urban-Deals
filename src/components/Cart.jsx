@@ -50,7 +50,7 @@ export default function Cart() {
           </div>
 
           {/* Billing section  */}
-          <div className="billing backdrop-blur-lg fixed text-md mob:text-xl tab:text-lg bottom-0  w-[70%] mob:w-[60%] tab:w-[22em] h-[9.1em] tab:h-[20em] tab:static rounded-t-xl tab:rounded-xl shadow-xl tab:mt-10  border border-slate-400 flex flex-col">
+          <div className="billing backdrop-blur-xl fixed text-md mob:text-xl tab:text-lg bottom-0  w-[85%] mob:w-[60%] tab:w-[22em] h-[9.1em] tab:h-[20em] tab:static rounded-t-xl tab:rounded-xl shadow-xl tab:mt-10  border border-slate-400 flex flex-col">
               <p className=" hidden tab:block text-3xl text-red-500 text-center font-semibold p-2">Billing section</p>
             
             <div className="check-out  w-[85%] tab:text-[1.1em] mx-auto mt-1  tab:bg-[#fff7f7] ">
@@ -59,7 +59,7 @@ export default function Cart() {
               <p className='flex justify-between'><span className='font-semibold'>Delivery charges:</span>  <span className='text-green-600'> $ {delivery}</span></p>
                 <hr className='border border-slate-400' />
               <p className='flex justify-between'><span className='font-semibold'>To Pay:</span>            <span className='font-semibold text-red-500'>  ${toPay}   </span></p>
-              <div className='flex justify-center mt-2 '><button className='bg-green-500 text-white p-1  rounded-md tab:py-2 tab:px-14 tab:mt-4 tab:text-xl font-semibold'>Checkout</button></div>
+              <div className='flex justify-center mt-2 '><button onClick={()=>alert('Santa Claus will deliver your products 🎁🎁🎀 😅😅😅')} className='bg-green-500 text-white p-1  rounded-md tab:py-2 tab:px-14 tab:mt-4 tab:text-xl font-semibold'>Checkout</button></div>
             </div>
 
             <div className='tab:flex justify-center mt-4 gap-4 hidden'>

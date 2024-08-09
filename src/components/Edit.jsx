@@ -4,6 +4,7 @@ import {nanoid} from 'nanoid'
 import { ProductContext } from '../Utils/Context'
 import 'react-router-dom'
 import { useNavigate, useParams } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 export default function Edit() {
     const{id}=useParams()
@@ -42,7 +43,7 @@ export default function Edit() {
             product.category.trim().length<4 
           )
           {
-            alert('All fields must have 4 charachters at least');
+            toast.warn('All fields must have 4 charachters at least');
             return;
           }
 
@@ -55,6 +56,7 @@ export default function Edit() {
             setProducts(copyData);
             
             localStorage.setItem('products', JSON.stringify(copyData))
+            toast.success('Product edited successfully')
             navigate(-1)
         }
         

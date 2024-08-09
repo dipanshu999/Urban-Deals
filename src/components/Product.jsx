@@ -84,9 +84,9 @@ export default function Product() {
 
         </div>  
       </div>
-            <div className="goto-cart absolute w-16 right-0 mr-60">
+            {/* <div className="goto-cart absolute w-16 right-0 mr-60">
               <button onClick={()=>navigate('/cart')} className='bg-black text-white absolute '>Go to cart</button>
-            </div>
+            </div> */}
     </div>
   );
 }
