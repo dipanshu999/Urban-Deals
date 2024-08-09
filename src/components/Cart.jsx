@@ -41,31 +41,35 @@ export default function Cart() {
         </>
        :   //  ABove is empty cart
 
-       <div className='flex flex-col  justify-center mob:items-center tab:mt-6 pr-4 pl-4 tab:flex-row lap:pr-8'>
-        <div className='mt-4 tab:hidden'><Back  /></div>
-          <div className='tab:w-[750px]   p-4 flex flex-col gap-4'>
+       <div className='flex flex-col  justify-center items-center tab:mt-6 mob:pr-4 mob:pl-4 tab:flex-row lap:pr-8'>
+            <div className='mt-4  tab:hidden'>
+              <Back/>
+            </div>
+          <div className=  ' w-[100vw] tab:w-[750px]   p-2 flex flex-col gap-4'>
             {cartProducts.map(item => <CartList key={item.id} item={item} />)}
           </div>
 
           {/* Billing section  */}
-          <div className="billing bg-white fixed bottom-0 mob:w-[70%] tab:w-[22em] tab:h-[20em] tab:static rounded-xl shadow-xl tab:mt-10  border flex flex-col">
+          <div className="billing backdrop-blur-lg fixed text-md mob:text-xl tab:text-lg bottom-0  w-[70%] mob:w-[60%] tab:w-[22em] h-[9.1em] tab:h-[20em] tab:static rounded-t-xl tab:rounded-xl shadow-xl tab:mt-10  border border-slate-400 flex flex-col">
               <p className=" hidden tab:block text-3xl text-red-500 text-center font-semibold p-2">Billing section</p>
             
-            <div className="check-out  w-[85%] text-[1.1em] mx-auto mt-4 bg-[#fff7f7] ">
+            <div className="check-out  w-[85%] tab:text-[1.1em] mx-auto mt-1  tab:bg-[#fff7f7] ">
               <p className='flex justify-between'><span className='font-semibold'>Total:</span>             <span className='text-green-600'>${totalPrice}</span></p>
               <p className='flex justify-between'><span className='font-semibold'>Taxes & charges:</span>   <span className='text-green-600'> $ {taxation}</span></p>
               <p className='flex justify-between'><span className='font-semibold'>Delivery charges:</span>  <span className='text-green-600'> $ {delivery}</span></p>
                 <hr className='border border-slate-400' />
               <p className='flex justify-between'><span className='font-semibold'>To Pay:</span>            <span className='font-semibold text-red-500'>  ${toPay}   </span></p>
-              <div className='flex justify-center mt-2'><button className='bg-green-500 text-white py-2 px-14 mt-4 text-xl font-semibold'>Checkout</button></div>
+              <div className='flex justify-center mt-2 '><button className='bg-green-500 text-white p-1  rounded-md tab:py-2 tab:px-14 tab:mt-4 tab:text-xl font-semibold'>Checkout</button></div>
             </div>
 
-            <div className='flex justify-center mt-4 gap-4'>
+            <div className='tab:flex justify-center mt-4 gap-4 hidden'>
                 <button onClick={()=>navigate('/')} className='bg-green-100 p-2 rounded-md '>Order more</button>
                 <button onClick={clearCart} className='bg-red-200 p-2 rounded-md '>Clear cart</button>
             </div>
 
           </div>
+
+          <div className="extra-space h-[16em]"></div>
     </div>
     
     }
