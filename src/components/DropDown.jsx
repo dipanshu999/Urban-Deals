@@ -97,7 +97,7 @@ export default function DropDown({filterProducts}) {
               tabIndex={-1}
               id={`menu-item-${index + 1}`}
               onClick={() => handleSelectAndFilter(item,item)}
-          >
+            >
             <span className='text-xl'>{isOpen?item: splitItem}</span>
           </Link>)
            }

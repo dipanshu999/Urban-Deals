@@ -9,7 +9,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={` ${darkMode?'bg-black':'bg-[#7a5dd8]' }  h-[60px] tab:h-[70px] w-full sticky top-0 z-30 flex justify-between items-center px-10 border-b-2 border-black`}>
+      <nav className={` ${darkMode?'bg-[#7924DE]':'bg-[#FEDC00]' }  h-[60px] tab:h-[70px] w-full sticky top-0 z-30 flex justify-between items-center px-10 border-b-2 border-black`}>
         
         <Link to={'/'}>
           <div className="logo ">
@@ -33,7 +33,7 @@ export default function Navbar() {
 
 
         <div className={` ${navToggle?'absolute':'hidden'} right-0 mt-[9.2em] tab:m-0  tab:static tab:block navLinks text-4xl `} >
-          <div className=' list-none  bg-black  gap-6 rounded-md p-6 px-12 mob:px-24 flex flex-col tab:m-0 tab:p-0 tab:bg-none tab:flex-row tab:gap-10 font-normal text-white'>
+          <div className={ `list-none ${darkMode?'bg-[#7924DE] text-[#FEDC00]' :'bg-[#FEDC00] text-[#7924DE]'} gap-6 rounded-md p-6 px-12 mob:px-24 flex flex-col tab:m-0 tab:p-0 tab:bg-none tab:flex-row tab:gap-10 font-semibold text-white`}>
             <Mode setMode={setMode} />
             <NavLink to={'/'}>About</NavLink>
             <NavLink to={'/cart'}>Cart</NavLink>

@@ -36,13 +36,13 @@ export default function Home() {
 
 
   return (
-    <div className={`${navToggle &&'blur-[8px]'}`}>
+    <div className={`${navToggle &&'blur-[8px]'} pb-2`}>
       {loading ? (
         <Loader />
       ) : (
         <div className='mb-8'>
           <div className='flex justify-center mt-10 gap-10 items-center '>
-            <Link to={'/create'} className='text-white bg-black px-5 py-2'>Add</Link>
+            <Link to={'/create'} className='text-white text-xl rounded-md font-medium bg-black px-5 py-2'>Add +</Link>
             <Dropdown filterProducts={filterProducts} />
           </div>
 
