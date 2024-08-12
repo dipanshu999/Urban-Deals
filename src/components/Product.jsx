@@ -49,7 +49,7 @@ export default function Product() {
   const truncatedTitle = truncateText(title, 7);
 
   return (
-    <div className='flex flex-col tab:flex-row items-center tab:px-4 lap:px-20'>
+    <div className='flex flex-col tab:flex-row items-center tab:px-4 lap:px-20 pb-8'>
       <div className='mt-6'>
         <Back/>
       </div>

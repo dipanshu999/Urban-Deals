@@ -38,7 +38,7 @@ export default function CartList({ item }) {
 
    return (
     
-    <div className= ' w-[100%] xsm:w-[85%]  mob:w-[87%] mx-auto tab:w-[95%] p-2 py-7 mob:p-4 border flex gap-4 items-center justify-between rounded-xl shadow-md'>
+    <div className= ' bg-white w-[100%] xsm:w-[85%]  mob:w-[87%] mx-auto tab:w-[95%] p-2 py-7 mob:p-4 border flex gap-4 items-center justify-between rounded-xl shadow-md'>
       
       <div className="product-desc flex justify-between items-center gap-4">
 

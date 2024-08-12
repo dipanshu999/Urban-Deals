@@ -42,7 +42,7 @@ export default function Home() {
       ) : (
         <div className='mb-8'>
           <div className='flex justify-center mt-10 gap-10 items-center '>
-            <Link to={'/create'} className='text-white text-xl rounded-md font-medium bg-black px-5 py-2'>Add +</Link>
+            <Link to={'/create'} className='text-white text-xl rounded-md font-medium bg-black px-5 py-2 border-white border'>Add +</Link>
             <Dropdown filterProducts={filterProducts} />
           </div>
 

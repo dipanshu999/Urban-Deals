@@ -33,9 +33,9 @@ export default function Navbar() {
 
 
         <div className={` ${navToggle?'absolute':'hidden'} right-0 mt-[9.2em] tab:m-0  tab:static tab:block navLinks text-4xl `} >
-          <div className={ `list-none ${darkMode?'bg-[#7924DE] text-[#FEDC00]' :'bg-[#FEDC00] text-[#7924DE]'} gap-6 rounded-md p-6 px-12 mob:px-24 flex flex-col tab:m-0 tab:p-0 tab:bg-none tab:flex-row tab:gap-10 font-semibold text-white`}>
+          <div className={ `list-none ${darkMode?'bg-[#7924DE] text-[#FEDC00]' : 'bg-[#FEDC00] text-[#7924DE]'} gap-6 rounded-md p-6 px-12 mob:px-24 items-center flex flex-col tab:m-0 tab:p-0 tab:bg-none tab:flex-row tab:gap-10 font-semibold`}>
             <Mode setMode={setMode} />
-            <NavLink to={'/'}>About</NavLink>
+            <NavLink to={'/'}> <div className=" w-12 "> <img className="h-full" src="../shopping-bag.png" alt="" /> </div> </NavLink>
             <NavLink to={'/cart'}>Cart</NavLink>
             <NavLink to={'/'}>Blogs</NavLink>
           </div>

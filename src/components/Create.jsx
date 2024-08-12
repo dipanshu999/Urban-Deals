@@ -54,7 +54,7 @@ export default function Create() {
   };
 
   return (
-    <div className="form mob:w-[70%] mx-auto border-2 p-10 mt-8 rounded-2xl shadow-2xl">
+    <div className="form pb-16 mob:w-[70%] mx-auto border-2 p-10 mt-8 rounded-2xl shadow-2xl">
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input
           type="text"

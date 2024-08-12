@@ -14,7 +14,7 @@ export default function App() {
   let {darkMode}=useContext(ProductContext)
   return (
     <>
-    <div className={`max-w-[1400px] w-full  mx-auto ${darkMode?'bg-[#1a1919]': 'bg-white' } ` } >
+    <div className={`max-w-[1400px] w-full  mx-auto ${darkMode?'bg-[#161616]': 'bg-white' } ` } >
       <Navbar/>
       <Routes>
         <Route path='/' element={ <Home/>}/>

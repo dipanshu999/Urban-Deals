@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import Back from './Back'
 
 export default function Cart() {
-  let { cartProducts ,setCartProducts} = useContext(ProductContext);
+  let { cartProducts ,setCartProducts,darkMode} = useContext(ProductContext);
   const navigate=useNavigate()
 
   // Ensure all products have a count property
@@ -33,15 +33,15 @@ export default function Cart() {
        cartProducts.length===0
        ?
        <>
-          <div className=' text-5xl w-[7em] h-[7em] mx-auto'> 
-            <img src="../empty-cart.jfif" className='w-full' alt="Empty cart" />
+          <div className=' text-5xl w-[7em] h-[7em] mx-auto mt-6'> 
+            <img src="../empty-cart.jfif" className='w-full rounded-3xl' alt="Empty cart" />
           </div>
           <p className='text-5xl text-center font-semibold'>You cart is empty !!</p>
-          <div className='flex justify-center'><button onClick={()=>navigate('/')} className='bg-green-500 p-4 text-xl text-white font-semibold rounded-xl mt-8'>Add products</button></div>
+          <div className='flex justify-center pb-16'><button onClick={()=>navigate('/')} className='bg-green-500 p-4 text-xl text-white font-semibold rounded-xl mt-8'>Add products</button></div>
         </>
        :   //  ABove is empty cart
 
-       <div className='flex flex-col  justify-center items-center tab:mt-6 mob:pr-4 mob:pl-4 tab:flex-row lap:pr-8'>
+       <div className='flex flex-col justify-center items-center tab:mt-6 mob:pr-4 mob:pl-4 tab:flex-row lap:pr-8 pb-24 tab:pb-28 '>
             <div className='mt-4  tab:hidden'>
               <Back/>
             </div>
@@ -50,7 +50,7 @@ export default function Cart() {
           </div>
 
           {/* Billing section  */}
-          <div className="billing backdrop-blur-xl fixed text-md mob:text-xl tab:text-lg bottom-0  w-[85%] mob:w-[60%] tab:w-[22em] h-[9.1em] tab:h-[20em] tab:static rounded-t-xl tab:rounded-xl shadow-xl tab:mt-10  border border-slate-400 flex flex-col">
+          <div className={` ${darkMode && 'bg-white'}  billing backdrop-blur-xl fixed text-md mob:text-xl tab:text-lg bottom-0  w-[85%] mob:w-[60%] tab:w-[22em] h-[9.1em] tab:h-[20em] tab:static rounded-t-xl tab:rounded-xl shadow-xl tab:mt-10  border border-slate-400 flex flex-col`}>
               <p className=" hidden tab:block text-3xl text-red-500 text-center font-semibold p-2">Billing section</p>
             
             <div className="check-out  w-[85%] tab:text-[1.1em] mx-auto mt-1  tab:bg-[#fff7f7] ">
@@ -58,7 +58,7 @@ export default function Cart() {
               <p className='flex justify-between'><span className='font-semibold'>Taxes & charges:</span>   <span className='text-green-600'> $ {taxation}</span></p>
               <p className='flex justify-between'><span className='font-semibold'>Delivery charges:</span>  <span className='text-green-600'> $ {delivery}</span></p>
                 <hr className='border border-slate-400' />
-              <p className='flex justify-between'><span className='font-semibold'>To Pay:</span>            <span className='font-semibold text-red-500'>  ${toPay}   </span></p>
+              <p className='flex justify-between'><span className='font-semibold'>To Pay:</span>   <span className='font-semibold text-red-500'>  ${toPay}   </span></p>
               <div className='flex justify-center mt-2 '><button onClick={()=>alert('Santa Claus will deliver your products 🎁🎁🎀 😅😅😅')} className='bg-green-500 text-white p-1  rounded-md tab:py-2 tab:px-14 tab:mt-4 tab:text-xl font-semibold'>Checkout</button></div>
             </div>
 

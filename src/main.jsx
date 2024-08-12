@@ -13,7 +13,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <Context>
     <BrowserRouter>
       <App />
-      <ToastContainer className='mt-8 w-[80vw] mx-auto font-semibold text-lg bg-green-400 rounded-md '/>
+      <ToastContainer className='tab:mt-8 w-[80vw] tab:w-[30vw] mx-auto font-semibold text-lg rounded-md '/>
     </BrowserRouter>
   </Context>,
 )
