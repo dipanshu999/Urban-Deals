@@ -54,7 +54,8 @@ export default function Create() {
   };
 
   return (
-    <div className="form pb-16 mob:w-[70%] mx-auto border-2 p-10 mt-8 rounded-2xl shadow-2xl">
+    <div className='min-h-screen'>
+    <div className="form  mob:w-[70%] mx-auto border-2 p-10 mt-8 rounded-2xl shadow-2xl">
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input
           type="text"
@@ -98,12 +99,13 @@ export default function Create() {
 
         <button
           type="submit"
-          className="bg-black hover:cursor-pointer text-white w-24 py-3 rounded-xl font-medium mx-auto text-xl"
+          className="bg-black hover:cursor-pointer border border-white text-white w-24 py-3 rounded-xl font-medium mx-auto text-xl"
           disabled={loading}
         >
           {loading ? <Loader className='h-full'/> : 'Submit'}
         </button>
       </form>
+    </div>
     </div>
   );
 }

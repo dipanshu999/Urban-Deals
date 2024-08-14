@@ -66,7 +66,7 @@ export default function Edit() {
 
 
   return (
-    <div className='pb-4'>
+    <div className='min-h-screen'>
       <div className="form  mob:w-[70%] mx-auto border-2 p-10 mt-8 rounded-2xl shadow-2xl">
 
         <form action="" className='flex flex-col gap-4'>

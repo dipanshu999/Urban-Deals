@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { ProductContext } from '../Utils/Context'
+import './Loader/cart.css'
 
 import Mode from './Mode'
 
@@ -35,8 +36,12 @@ export default function Navbar() {
         <div className={` ${navToggle?'absolute':'hidden'} right-0 mt-[9.2em] tab:m-0  tab:static tab:block navLinks text-4xl `} >
           <div className={ `list-none ${darkMode?'bg-[#7924DE] text-[#FEDC00]' : 'bg-[#FEDC00] text-[#7924DE]'} gap-6 rounded-md p-6 px-12 mob:px-24 items-center flex flex-col tab:m-0 tab:p-0 tab:bg-none tab:flex-row tab:gap-10 font-semibold`}>
             <Mode setMode={setMode} />
-            <NavLink to={'/'}> <div className=" w-12 "> <img className="h-full" src="../shopping-bag.png" alt="" /> </div> </NavLink>
-            <NavLink to={'/cart'}>Cart</NavLink>
+            <NavLink to={'/cart'}> 
+              <div className=" cart w-8 pt-2 relative "> 
+                <img className="h-full " src="../cart.png" alt="" /> 
+                <span className='absolute w-5 h-5 top-2 left-4 text-lg bg-white rounded-full'>0</span> 
+              </div> 
+            </NavLink>
             <NavLink to={'/'}>Blogs</NavLink>
           </div>
         </div>

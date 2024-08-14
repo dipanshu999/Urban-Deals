@@ -77,9 +77,9 @@ export default function Product() {
             <p className='text-sm opacity-70'>{truncatedDescription}</p>
           </div>
 
-          <div className="btn flex gap-4">
-            <Link to={`/edit/${product.id}`} className='border-2 border-green-400 px-4  py-2 rounded-xl'>Edit</Link>
-            <button onClick={() => deleteItem(product.id)} className='border-2 border-red-400 px-4  py-2 rounded-xl'>Delete</button>
+          <div className="btn flex text-xl text-white gap-4">
+            <Link to={`/edit/${product.id}`} className='border-2 bg-green-500 px-4  py-2 rounded-xl'>Edit</Link>
+            <button onClick={() => deleteItem(product.id)} className='border-2 bg-red-500 px-4  py-2 rounded-xl'>Delete</button>
           </div>
 
         </div>  
