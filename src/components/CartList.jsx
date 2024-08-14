@@ -1,9 +1,11 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { ProductContext } from '../Utils/Context';
+import { useNavigate } from 'react-router-dom';
 
 export default function CartList({ item }) {
   let { cartProducts, setCartProducts } = useContext(ProductContext);
   const [count, setCount] = useState(1);
+  const navigate=useNavigate()
 
   useEffect(() => {
     setCount(item.count || 1);
@@ -38,9 +40,9 @@ export default function CartList({ item }) {
 
    return (
     
-    <div className= ' bg-white w-[100%] xsm:w-[85%]  mob:w-[87%] mx-auto tab:w-[95%] p-2 py-7 mob:p-4 border flex gap-4 items-center justify-between rounded-xl shadow-md'>
+    <div  className= ' bg-white w-[100%] xsm:w-[85%]  mob:w-[87%] mx-auto tab:w-[95%] p-2 py-7 mob:p-4 border flex gap-4 items-center justify-between rounded-xl shadow-md'>
       
-      <div className="product-desc flex justify-between items-center gap-4">
+      <div onClick={()=>navigate(`/product/${item.id}`)} className="product-desc hover:cursor-pointer flex justify-between items-center gap-4">
 
         <div className='image  rounded-md w-20 h-16'>
           <img src={item.image} alt="" className='h-full w-full object-contain m-auto' />

@@ -6,11 +6,11 @@ import './Loader/cart.css'
 import Mode from './Mode'
 
 export default function Navbar() {
-  const {navToggle,setNavToggle,darkMode,setMode} = useContext(ProductContext);
+  const {navToggle,setNavToggle,darkMode,setMode,cartProducts} = useContext(ProductContext);
 
   return (
     <>
-      <nav className={` ${darkMode?'bg-[#7924DE]':'bg-[#FEDC00]' }  h-[60px] tab:h-[70px] w-full sticky top-0 z-30 flex justify-between items-center px-10 border-b-2 border-black`}>
+      <nav className={` ${darkMode?'bg-[#913df8]':'bg-[#FEDC00]' }  h-[60px] tab:h-[70px] w-full sticky top-0 z-30 flex justify-between items-center px-10 border-b-2 border-black`}>
         
         <Link to={'/'}>
           <div className="logo ">
@@ -34,13 +34,12 @@ export default function Navbar() {
 
 
         <div className={` ${navToggle?'absolute':'hidden'} right-0 mt-[9.2em] tab:m-0  tab:static tab:block navLinks text-4xl `} >
-          <div className={ `list-none ${darkMode?'bg-[#7924DE] text-[#FEDC00]' : 'bg-[#FEDC00] text-[#7924DE]'} gap-6 rounded-md p-6 px-12 mob:px-24 items-center flex flex-col tab:m-0 tab:p-0 tab:bg-none tab:flex-row tab:gap-10 font-semibold`}>
+          <div className={ `list-none ${darkMode?'bg-[#913df8] text-[#FEDC00]' : 'bg-[#FEDC00] text-[#7924DE]'} gap-6 rounded-md p-6 px-12 mob:px-24 items-center flex flex-col tab:m-0 tab:p-0 tab:bg-none tab:flex-row tab:gap-10 font-semibold`}>
             <Mode setMode={setMode} />
             <NavLink to={'/cart'}> 
-              <div className=" cart w-8 pt-2 relative "> 
+              <div className=" cart w-9 pt-2 relative "> 
                 <img className="h-full " src="../cart.png" alt="" /> 
-                <span className='absolute w-5 h-5 top-2 left-4 text-lg bg-white rounded-full'>0</span> 
-              </div> 
+                {cartProducts.length>0 ? <span className='absolute  w-6 h-6 top-1 left-5 flex justify-center items-center  text-lg bg-[#ff5234] text-white rounded-full'>{cartProducts.length}</span> :null }              </div> 
             </NavLink>
             <NavLink to={'/'}>Blogs</NavLink>
           </div>

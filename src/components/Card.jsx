@@ -3,15 +3,15 @@ import { ProductContext } from '../Utils/Context';
 
 export default function Card({item}) {
     let {darkMode}=useContext(ProductContext)
-    const {image,title}=item;
+    const {image,title,price,rating}=item;
     function truncateText(text, wordLimit) {
       const words=text.split(' ');
       if (words.length <= wordLimit) {
         return text;
       }
-      return words.slice(0, wordLimit).join(' ') + ' ...';
+      return words.slice(0, wordLimit).join(' ') ;
     }
-    const truncatedTitle = truncateText(title, 6);
+    const truncatedTitle = truncateText(title, 5);
 
   return (
     <>
@@ -20,8 +20,15 @@ export default function Card({item}) {
               <img src={image} className='h-full  m-auto object-contain' />
             </div>
 
-            <div className="card-footer bg-[#FEDC00] text-xl font-medium h-[30%] flex justify-center items-center p-2">
-                <p className='text-[#7924DE] text-[0.7em] mob:text-[1em] leading-5'>{truncatedTitle}</p>
+            <div className="card-footer border border-red-400 bg-[#FEDC00] pl-1 h-[30%] flex flex-col justify-between gap-1 ">
+                <div className=' h-[60%] flex items-center overflow-y-hidden '>
+                  <p className='text-[#7924DE] text-[0.78em] mob:text-[0.8em] tab:text-[1em]  font-medium leading-3 mob:leading-4'>{truncatedTitle}</p>
+                </div>
+
+                <div className='flex justify-between items-center pr-2'>
+                  <p className='text-xl font-bold'>${price}</p>
+                  <p>⭐{rating.rate}</p>
+                </div>
             </div>
         </div> 
     </>
