@@ -20,9 +20,9 @@ export default function Card({item}) {
               <img src={image} className='h-full  m-auto object-contain' />
             </div>
 
-            <div className="card-footer border border-red-400 bg-[#FEDC00] pl-1 h-[30%] flex flex-col justify-between gap-1 ">
+            <div className="card-footer bg-[#FEDC00] pl-1 h-[30%] flex flex-col justify-between gap-1 ">
                 <div className=' h-[60%] flex items-center overflow-y-hidden '>
-                  <p className='text-[#7924DE] text-[0.78em] mob:text-[0.8em] tab:text-[1em]  font-medium leading-3 mob:leading-4'>{truncatedTitle}</p>
+                  <p className='text-[#7924DE] mob:text-[0.8em] tab:text-[1em]  font-medium leading-3 mob:leading-4'>{truncatedTitle}</p>
                 </div>
 
                 <div className='flex justify-between items-center pr-2'>
