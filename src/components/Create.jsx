@@ -14,12 +14,13 @@ export default function Create() {
   const [price, setPrice] = useState('');
   const [category, setCategory] = useState('');
   const [description, setDescription] = useState('');
+  const [rating, setRating] = useState({rate:''});
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (title.trim().length < 4 || description.trim().length < 4 || price.trim().length < 1 || image.trim().length < 4 || category.trim().length < 4) {
+    if (title.trim().length < 4 || description.trim().length < 4 || price.trim().length < 1 || image.trim().length < 4 || category.trim().length < 4 ||  rating.rate.trim().length < 1) {
       toast.warn('Input must be 4 characters at least.');
       return;
     }
@@ -31,6 +32,7 @@ export default function Create() {
       category,
       image,
       description,
+      rating,
     };
 
     setLoading(true);
@@ -81,6 +83,14 @@ export default function Create() {
             value={price}
             className="border-2 p-2 border-slate-500 rounded-md"
           />
+          <input
+            type="text"
+            placeholder="Rating"
+            onChange={(e) => setRating({...rating, rate:e.target.value})}
+            value={rating.rate}
+            className="border-2 p-2 flex-1 border-slate-500 rounded-md"
+          />
+
           <input
             type="text"
             placeholder="Category"

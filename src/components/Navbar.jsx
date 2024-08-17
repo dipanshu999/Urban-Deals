@@ -39,10 +39,10 @@ export default function Navbar() {
             <NavLink to={'/cart'}> 
               <div className=" cart w-9 pt-2 relative "> 
                 <img className="h-full " src="../cart.png" alt="" /> 
-                {cartProducts.length>0 ? <span className='absolute  w-6 h-6 top-1 left-5 flex justify-center items-center  text-lg bg-[#ff5234] text-white rounded-full'>{cartProducts.length}</span> :null }              </div> 
+                {cartProducts.length>0 ? <span className='absolute  w-6 h-6 top-1 left-5 flex justify-center items-center  text-lg bg-[#ff3232] text-white rounded-full'>{cartProducts.length}</span> :null }              </div> 
             </NavLink>
             <NavLink to={'/'}>Blogs</NavLink>
-          </div>
+          </div>  
         </div>
 
         

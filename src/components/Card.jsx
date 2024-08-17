@@ -13,6 +13,8 @@ export default function Card({item}) {
     }
     const truncatedTitle = truncateText(title, 5);
 
+    const rate = rating?.rate || 'N/A';
+
   return (
     <>
         <div className={`${darkMode &&  'border border-white shadow-white shadow-md'} bg-white card h-[14em] w-[9.2em] shadow-lg xsm:h-[14em] xsm:w-[9.78em] mob:h-[14em] mob:w-[10.5em] lap:h-[16em] lap:w-[12em] border border-gray-300 shadows rounded-xl overflow-hidden`}> 
@@ -22,12 +24,12 @@ export default function Card({item}) {
 
             <div className="card-footer bg-[#FEDC00] pl-1 h-[30%] flex flex-col justify-between gap-1 ">
                 <div className=' h-[60%] flex items-center overflow-y-hidden '>
-                  <p className='text-[#7924DE] mob:text-[0.8em] tab:text-[1em]  font-medium leading-3 mob:leading-4'>{truncatedTitle}</p>
-                </div>
+                <p className='text-[#7924DE] mob:text-[0.8em] tab:text-[1em]  font-medium leading-4'>{truncatedTitle}</p>
+            </div>
 
                 <div className='flex justify-between items-center pr-2'>
                   <p className='text-xl font-bold'>${price}</p>
-                  <p>⭐{rating.rate}</p>
+                  <p className='bg-white rounded-md mb-[0.15rem]'>⭐{rate}</p>
                 </div>
             </div>
         </div> 
