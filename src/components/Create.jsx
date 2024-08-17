@@ -6,7 +6,7 @@ import Loader from './Loader/Loader';
 import { toast } from 'react-toastify';
 
 export default function Create() {
-  const { products, setProducts } = useContext(ProductContext);
+  const { products, setProducts,darkMode } = useContext(ProductContext);
   const navigate = useNavigate();
 
   const [image, setImage] = useState('');
@@ -57,6 +57,7 @@ export default function Create() {
 
   return (
     <div className='min-h-screen'>
+      <p className={`text-5xl text-center mt-4 font-semibold ${darkMode ? 'text-white':null} `}>Add a product</p>
     <div className="form  mob:w-[70%] mx-auto border-2 p-10 mt-8 rounded-2xl shadow-2xl">
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input
@@ -75,20 +76,21 @@ export default function Create() {
           className="border-2 p-2 border-slate-500 rounded-md"
         />
 
-        <div className="price-desc flex flex-col tab:flex-row justify-between gap-4">
+        <div className="price-desc flex flex-col tab:flex-row  justify-between gap-4">
           <input
             type="number"
             placeholder="Price"
             onChange={(e) => setPrice(e.target.value)}
             value={price}
-            className="border-2 p-2 border-slate-500 rounded-md"
+            className="border-2 p-2 min-w-32 border-slate-500 rounded-md"
           />
           <input
+
             type="text"
             placeholder="Rating"
             onChange={(e) => setRating({...rating, rate:e.target.value})}
             value={rating.rate}
-            className="border-2 p-2 flex-1 border-slate-500 rounded-md"
+            className="border-2 min-w-32 p-2  border-slate-500 rounded-md"
           />
 
           <input
@@ -96,7 +98,7 @@ export default function Create() {
             placeholder="Category"
             onChange={(e) => setCategory(e.target.value)}
             value={category}
-            className="border-2 p-2 flex-1 border-slate-500 rounded-md"
+            className="border-2 p-2 min-w-32  border-slate-500 rounded-md"
           />
         </div>
 

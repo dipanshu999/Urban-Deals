@@ -78,8 +78,8 @@ export default function Product() {
           </div>
 
           <div className="btn flex text-xl text-white gap-4">
-            <Link to={`/edit/${product.id}`} className='border-2 bg-green-500 px-4  py-2 rounded-xl'>Edit</Link>
-            <button onClick={() => deleteItem(product.id)} className='border-2 bg-red-500 px-4  py-2 rounded-xl'>Delete</button>
+            <Link to={`/edit/${product.id}`} className=' bg-green-500 px-4  py-2 rounded-xl'>Edit</Link>
+            <button onClick={() => deleteItem(product.id)} className=' bg-red-500 px-4  py-2 rounded-xl'>Delete</button>
           </div>
 
         </div>  

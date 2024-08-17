@@ -82,7 +82,7 @@ export default function Edit() {
 
             <textarea placeholder='Description' name='description' onChange={changeHandler} value={product&&product.description} className=' border-2 p-2 h-28 border-slate-500 rounded-md'></textarea>
 
-            <input type="submit" onClick={handleSubmit} className='bg-black hover:cursor-pointer text-white w-24 py-3 rounded-xl font-medium mx-auto text-xl'/>
+            <input type="submit" onClick={handleSubmit} className='bg-black hover:cursor-pointer border border-white text-white w-24 py-3 rounded-xl font-medium mx-auto text-xl'/>
         </form>
 
       </div>

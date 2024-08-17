@@ -8,6 +8,7 @@ import Create from './components/Create'
 import Edit from './components/Edit'
 import Cart from './components/Cart'
 import { ProductContext } from './Utils/Context'
+import About from './components/About'
 
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
         <Route path='/edit/:id' element={ <Edit/>}/>
         <Route path='/create' element={ <Create/>}/>
         <Route path='/cart' element={ <Cart/>}/>
+        <Route path='/about' element={ <About/>}/>
       </Routes>
     </div>
     </>
