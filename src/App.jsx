@@ -15,17 +15,17 @@ export default function App() {
   let {darkMode}=useContext(ProductContext)
   return (
     <>
-    <div className={`max-w-[1400px] w-full  mx-auto ${darkMode?'bg-[#161616]': 'bg-white' } ` } >
-      <Navbar/>
-      <Routes>
-        <Route path='/' element={ <Home/>}/>
-        <Route path='/product/:id' element={ <Product/>}/>
-        <Route path='/edit/:id' element={ <Edit/>}/>
-        <Route path='/create' element={ <Create/>}/>
-        <Route path='/cart' element={ <Cart/>}/>
-        <Route path='/about' element={ <About/>}/>
-      </Routes>
-    </div>
+      <div className={`max-w-[1400px] w-full  mx-auto ${darkMode?'bg-[#161616]': 'bg-white' } ` } >
+        <Navbar/>
+        <Routes>
+          <Route path='/' element={ <Home/>}/>
+          <Route path='/product/:id' element={ <Product/>}/>
+          <Route path='/edit/:id' element={ <Edit/>}/>
+          <Route path='/create' element={ <Create/>}/>
+          <Route path='/cart' element={ <Cart/>}/>
+          <Route path='/about' element={ <About/>}/>
+        </Routes>
+      </div>
     </>
   )
 }
