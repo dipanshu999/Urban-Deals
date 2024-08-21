@@ -10,10 +10,10 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={` ${darkMode?'bg-[#913df8]':'bg-[#FEDC00]' }  h-[60px] tab:h-[70px] w-full sticky top-0 z-30 flex justify-between items-center px-10 border-b-2 border-black`}>
+      <nav className={`${darkMode?'bg-[#913df8]':'bg-[#FEDC00]' } h-[60px] tab:h-[70px] w-full sticky top-0 z-30 flex justify-between items-center px-10 border-b-2 border-black`}>
         
         <Link to={'/'}>
-          <div className="logo ">
+          <div onClick={()=>setNavToggle(false)} className="logo ">
             <p className='text-4xl'>Logo</p>
           </div>
         </Link>
@@ -33,15 +33,15 @@ export default function Navbar() {
         </div>
 
 
-        <div className={` ${navToggle?'absolute':'hidden'} right-0 mt-[9.2em] tab:m-0  tab:static tab:block navLinks text-4xl `} >
+        <div  className={` ${navToggle?'absolute':'hidden'} right-0 mt-[9.2em] tab:m-0  tab:static tab:block navLinks text-4xl `} >
           <div className={ `list-none ${darkMode?'bg-[#913df8] text-[#FEDC00]' : 'bg-[#FEDC00] text-[#7924DE]'} gap-6 rounded-md p-6 px-12 mob:px-24 items-center flex flex-col tab:m-0 tab:p-0 tab:bg-none tab:flex-row tab:gap-10 font-semibold`}>
             <Mode setMode={setMode} />
-            <NavLink to={'/cart'}> 
+            <NavLink to={'/cart'} onClick={()=>setNavToggle(false)}> 
               <div className=" cart w-9 pt-2 relative "> 
                 <img className="h-full " src="../cart.png" alt="" /> 
                 {cartProducts.length>0 ? <span className='absolute  w-6 h-6 top-1 left-5 flex justify-center items-center  text-lg bg-[#ff3232] text-white rounded-full'>{cartProducts.length}</span> :null }              </div> 
             </NavLink>
-            <NavLink to={'/about'}>About</NavLink>
+            <NavLink onClick={()=>setNavToggle(false)} to={'/about'}>About</NavLink>
           </div>  
         </div>
 
