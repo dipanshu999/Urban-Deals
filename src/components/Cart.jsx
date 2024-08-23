@@ -36,7 +36,7 @@ export default function Cart() {
           <div className=' text-5xl w-[7em] h-[7em] mx-auto mt-6'> 
             <img src="../empty-cart.jfif" className='w-full rounded-3xl' alt="Empty cart" />
           </div>
-          <p className='text-5xl text-center font-semibold'>You cart is empty !!</p>
+          <p className={`text-5xl text-center font-semibold ${darkMode ? 'text-white':'text-black'} `}>You cart is empty !!</p>
           <div className='flex justify-center pb-16'><button onClick={()=>navigate('/')} className='bg-green-500 p-4 text-xl text-white font-semibold rounded-xl mt-8'>Add products</button></div>
         </>
        :   //  ABove is empty cart

@@ -15,7 +15,7 @@ export default function App() {
   let {darkMode,setNavToggle,navToggle}=useContext(ProductContext)
   return (
     <>
-      <div  className={`  max-w-[1400px] w-full  mx-auto ${darkMode?'bg-[#161616]': 'bg-white' } ` } >
+      <div  className={`  max-w-[1400px] w-full  mx-auto ${darkMode?'bg-[#0e0e0e]': 'bg-white' } ` } >
         <Navbar/>
         <Routes>
           <Route path='/' element={ <Home/>}/>

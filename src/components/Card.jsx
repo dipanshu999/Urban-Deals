@@ -25,7 +25,7 @@ export default function Card({item}) {
 
             <div className="card-footer bg-[#FEDC00] pl-1 h-[30%] flex flex-col justify-between gap-1 ">
                 <div className=' h-[60%] flex items-center overflow-y-hidden '>
-                <p className='text-[#7924DE] text-[1em] font-medium leading-4'>{truncatedTitle}</p>
+                <p className='TITLE text-[#7924DE] text-[1em] lap:text-[1.2em] font-medium leading-4'>{truncatedTitle}</p>
             </div>
 
                 <div className='flex justify-between items-center pr-2'>
