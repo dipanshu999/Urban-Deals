@@ -12,6 +12,7 @@ export default function Context(props) {
   const [navToggle, setNavToggle] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
   const [cartProducts, setCartProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState(products);
 
   function setMode() {
     setDarkMode((prev) => !prev);
@@ -47,6 +48,7 @@ export default function Context(props) {
 
       if (storedProducts) {
         setProducts(storedProducts);
+        setFilteredProducts(storedProducts);
         setLoading(false);
         return;
       }
@@ -76,6 +78,8 @@ export default function Context(props) {
           value={{
                 products,
                 setProducts,
+                setFilteredProducts,
+                filteredProducts,
                 loading,
                 setLoading,
                 setNavToggle,

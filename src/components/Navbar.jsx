@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { ProductContext } from '../Utils/Context'
 import './Loader/cart.css'
@@ -6,7 +6,18 @@ import './Loader/cart.css'
 import Mode from './Mode'
 
 export default function Navbar() {
-  const {navToggle,setNavToggle,darkMode,setMode,cartProducts} = useContext(ProductContext);
+  const {navToggle,setNavToggle,darkMode,setMode,cartProducts,products, setFilteredProducts} = useContext(ProductContext);
+
+  const [value,setValue]=useState('')
+  
+
+  const search = (value) => {
+    setFilteredProducts(
+      products.filter((product) =>
+        product.title.toLowerCase().includes(value.toLowerCase())
+      )
+    );
+  };
 
   return (
     <>
@@ -18,7 +29,16 @@ export default function Navbar() {
           </div>
         </Link>
 
+        
+          
+
+      <div className="seacrh--NavLinks flex items-center gap-6">
+        <div className="search">
+            <input type="text" onChange={(e)=>{search(e.target.value) ;setValue(e.target.value)}} className='border border-black w-32 h-9 pl-1 rounded-xl' value={value} placeholder='🔍Search'/>
+        </div>
+
         <div onClick={()=>setNavToggle(()=>!navToggle)} className='tab:hidden bg-[#a8212a] p-2 rounded-md' >
+
          { 
          navToggle
             ?
@@ -30,20 +50,25 @@ export default function Navbar() {
             <svg  className='h-8 w-8 hover:cursor-pointer '  viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="rgba(255,255,255,1)"><path d="M3 4H21V6H3V4ZM9 11H21V13H9V11ZM3 18H21V20H3V18Z"></path></svg>
           </div>    
         }
-        </div>
+        </div>  {/*Hambuger menu is hidden till laptop screen*/}   
 
 
-        <div  className={` ${navToggle?'absolute':'hidden'} right-0 mt-[9.2em] tab:m-0  tab:static tab:block navLinks text-4xl `} >
+        <div  className={`  NavLinks  ${navToggle?'absolute':'hidden'}  right-0 mt-[9.2em] tab:m-0  tab:static tab:flex navLinks text-4xl `} >
+
           <div className={ `list-none ${darkMode?'bg-[#913df8] text-[#FEDC00]' : 'bg-[#FEDC00] text-[#7924DE]'} gap-6 rounded-md p-6 px-12 mob:px-24 items-center flex flex-col tab:m-0 tab:p-0 tab:bg-none tab:flex-row tab:gap-10 font-semibold`}>
             <Mode setMode={setMode} />
+            
             <NavLink to={'/cart'} onClick={()=>setNavToggle(false)}> 
               <div className=" cart w-9 pt-2 relative "> 
                 <img className="h-full " src="../cart.png" alt="" /> 
-                {cartProducts.length>0 ? <span className='absolute  w-6 h-6 top-1 left-5 flex justify-center items-center  text-lg bg-[#ff3232] text-white rounded-full'>{cartProducts.length}</span> :null }              </div> 
+                {cartProducts.length>0 ? <span className='absolute  w-6 h-6 top-1 left-5 flex justify-center items-center  text-lg bg-[#ff3232] text-white rounded-full'>{cartProducts.length}</span> :null }          
+              </div> 
             </NavLink>
+            
             <NavLink onClick={()=>setNavToggle(false)} to={'/about'}>About</NavLink>
           </div>  
         </div>
+      </div>
 
         
       </nav>

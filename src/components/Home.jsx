@@ -6,8 +6,7 @@ import { Link, useLocation } from 'react-router-dom';
 import Loader from './Loader/Loader';
 
 export default function Home() {
-  const { products, loading, setLoading,navToggle,setNavToggle } = useContext(ProductContext);
-  const [filteredProducts, setFilteredProducts] = useState([]);
+  const { products, loading, setLoading,navToggle,setNavToggle,filteredProducts, setFilteredProducts } = useContext(ProductContext);
   const { search } = useLocation();
   const category = decodeURIComponent(search.split('=')[1]);
 
