@@ -22,7 +22,7 @@ export default function Home() {
     setLoading(true);
     try {
       if (category && category !== 'All section') {
-        setFilteredProducts(products.filter(item => item.category === category));
+        setFilteredProducts(filteredProducts.filter(item => item.category === category));
       } else {
         setFilteredProducts(products);
       }
