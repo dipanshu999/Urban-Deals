@@ -24,20 +24,20 @@ export default function Navbar() {
       <nav className={`${darkMode?'bg-[#913df8]':'bg-[#FEDC00]' } h-[60px] tab:h-[70px] w-full sticky top-0 z-30 flex justify-between items-center px-6 mob:px-10 border-b-2 border-black`}>
         
         <Link to={'/'}>
-          <div onClick={()=>setNavToggle(false)} className="logo h-11 border border-black rounded-lg overflow-hidden">
-            <img src='../Logo.png' className='h-full'></img>
+          <div onClick={()=>setNavToggle(false)} className="logo h-11 w-11 border  border-black rounded-lg overflow-hidden">
+            <img src='../Logo.png' className=''></img>
           </div>
         </Link>
 
         
           
 
-      <div className="seacrh--NavLinks flex items-center gap-1 tab:gap-6">
+      <div className="seacrh--NavLinks flex items-center gap-4 mob:gap-6">
         <div className="search">
-            <input type="text" onChange={(e)=>{search(e.target.value) ;setValue(e.target.value)}} className='border border-black w-24 mob:w-32 mob:h-9 pl-1 rounded-md mob:rounded-xl' value={value} placeholder='🔍Search'/>
+            <input type="text" onChange={(e)=>{search(e.target.value) ; setValue(e.target.value)}} className='border border-black w-24 mob:w-32 h-8 mob:h-9 pl-1 rounded-md mob:rounded-xl' value={value} placeholder='🔍Search'/>
         </div>
 
-        <div onClick={()=>setNavToggle(()=>!navToggle)} className='tab:hidden bg-[#a8212a] p-1 mob:p-2 rounded-md' >
+        <div onClick={()=>setNavToggle(()=>!navToggle)} className='tab:hidden bg-[#a8212a] p-[0.3rem] mob:p-2 rounded-md' >
 
          { 
          navToggle

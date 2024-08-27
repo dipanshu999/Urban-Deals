@@ -6,7 +6,7 @@ import night from './Loader/night-mode.png'
 export default function Mode({setMode}) {
   return (
     <>
-       <div className="ToggleBox flex gap-3 items-center bg-black p-1 py-1 rounded-xl ">      {/*  Mode Toggle button*/}
+       <div className="ToggleBox flex gap-3 items-center bg-slate-800 p-1 py-1 rounded-xl ">      {/*  Mode Toggle button*/}
           <div className=" DAY h-8 w-8 contrast-200 saturate-200  "><img  src= {day} alt="" /></div>
              <label className="inline-flex items-center cursor-pointer border-white  rounded-full">
                  <input type="checkbox" value="" className="sr-only peer" onClick={setMode} />
