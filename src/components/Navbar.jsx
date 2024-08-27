@@ -24,7 +24,7 @@ export default function Navbar() {
       <nav className={`${darkMode?'bg-[#913df8]':'bg-[#FEDC00]' } h-[60px] tab:h-[70px] w-full sticky top-0 z-30 flex justify-between items-center px-6 mob:px-10 border-b-2 border-black`}>
         
         <Link to={'/'}>
-          <div onClick={()=>setNavToggle(false)} className="logo h-14 border border-black rounded-lg overflow-hidden">
+          <div onClick={()=>setNavToggle(false)} className="logo h-11 border border-black rounded-lg overflow-hidden">
             <img src='../Logo.png' className='h-full'></img>
           </div>
         </Link>
