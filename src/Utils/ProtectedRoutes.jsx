@@ -1,8 +1,10 @@
 import React from 'react'
-import { Outlet,Navigate } from 'react-router-dom'
+import { Outlet,useNavigate } from 'react-router-dom'
 
 export default function ProtectedRoutes() {
-    const user=null;
+    const navigate= useNavigate()
+
+    const user=true;
      if(user) {<Outlet/>} 
      
      else{
@@ -13,7 +15,7 @@ export default function ProtectedRoutes() {
             <p className="mt-4 text-lg">You need to be logged in to access this page.</p>
             <button 
               className="mt-6 px-4 py-2 bg-blue-600 text-white rounded"
-              onClick={() => window.location.href = '/'} // Or use react-router's `Navigate` component
+              onClick={() => navigate('/') } 
             >
               Go to Login
             </button>
