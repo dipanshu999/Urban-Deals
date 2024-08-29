@@ -5,7 +5,7 @@ export default function ProtectedRoutes() {
     const navigate= useNavigate()
 
     const user=true;
-     if(user) {<Outlet/>} 
+     if(user) {return <Outlet/>} 
      
      else{
         return (
