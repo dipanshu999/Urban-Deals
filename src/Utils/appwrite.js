@@ -1,5 +1,5 @@
 import { Client, Account } from 'appwrite';
-import { PROJECT_ID } from './constant';
+let PROJECT_ID=import.meta.env.VITE_PROJECT_ID
 
 export const client = new Client();
 
@@ -8,4 +8,4 @@ client
     .setProject(PROJECT_ID);
 
 export const account = new Account(client);
-export { ID } from 'appwrite';
+export { ID, Account } from 'appwrite';

@@ -10,6 +10,7 @@ import Cart from './components/Cart'
 import { ProductContext } from './Utils/Context'
 import About from './components/About'
 import ProtectedRoutes from './Utils/ProtectedRoutes'
+import Login from './components/Login'
 
 export default function App() {
   let {darkMode,setNavToggle,navToggle}=useContext(ProductContext)
@@ -25,6 +26,7 @@ export default function App() {
             <Route path='/create' element={ <Create/>}/>
             <Route path='/cart' element={ <Cart/>}/>
             <Route path='/about' element={ <About/>}/>
+            <Route path='/login' element={<Login/>} />
           </Route>
         </Routes>
       </div>
