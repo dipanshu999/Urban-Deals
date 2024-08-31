@@ -13,6 +13,7 @@ export default function Context(props) {
   const [darkMode, setDarkMode] = useState(false);
   const [cartProducts, setCartProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState(products);
+  const [loggedInUser, setLoggedInUser] = useState(null);
 
   function setMode() {
     setDarkMode((prev) => !prev);
@@ -88,7 +89,9 @@ export default function Context(props) {
                 setMode,
                 cartHandle,
                 cartProducts,
-                setCartProducts
+                setCartProducts,
+                loggedInUser, 
+                setLoggedInUser
           }}
     >
       {props.children}

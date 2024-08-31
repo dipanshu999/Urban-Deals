@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { account, ID } from '../Utils/appwrite';
 import {useNavigate} from 'react-router-dom'
+import { ProductContext } from '../Utils/Context';
+import { toast } from 'react-toastify';
 
 export default function Login() {
+    const{loggedInUser, setLoggedInUser}=useContext(ProductContext)
+
     const navigate=useNavigate()
-    const [loggedInUser, setLoggedInUser] = useState(null);
+    
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
@@ -13,7 +17,9 @@ export default function Login() {
       await account.createEmailPasswordSession(email, password);
       setLoggedInUser(await account.get());
       navigate('/')
+      toast.success('Logged in successfully')
     }
+    console.log(loggedInUser)
   
   return (
     <div>
@@ -31,17 +37,6 @@ export default function Login() {
         </button>
 
         <button
-          className='bg-blue-400'
-          type="button"
-          onClick={async () => {
-            await account.create(ID.unique(), email, password, name);
-            login(email, password);
-          }}
-        >
-          Register
-        </button>
-
-        <button
           className='bg-red-400'
           type="button"
           onClick={async () => {
@@ -52,7 +47,9 @@ export default function Login() {
           Logout
         </button>
       </form>
-    </div>
+
+      <p className='mt-8'>Don't have account,<span className='text-blue-600 font-semibold' onClick={()=>navigate('/register')}>Sign up</span>   </p>
+    </div> 
     
   )
 }
