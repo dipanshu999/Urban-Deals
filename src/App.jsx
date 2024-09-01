@@ -22,6 +22,8 @@ export default function App() {
         
         <Routes>
           <Route path='/' element={ <Home/>}/>
+          <Route path='/login' element={<Login/>} />
+          <Route path='/register' element={<SignUp/>} />
 
           <Route element={<ProtectedRoutes/>} >
             <Route path='/product/:id' element={ <Product/>}/>
@@ -29,8 +31,6 @@ export default function App() {
             <Route path='/create' element={ <Create/>}/>
             <Route path='/cart' element={ <Cart/>}/>
             <Route path='/about' element={ <About/>}/>
-            <Route path='/login' element={<Login/>} />
-            <Route path='/register' element={<SignUp/>} />
           </Route>
           
         </Routes>

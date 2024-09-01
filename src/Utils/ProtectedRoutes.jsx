@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Outlet,useNavigate } from 'react-router-dom'
+import { ProductContext } from './Context';
 
 export default function ProtectedRoutes() {
+    const {loggedInUser}=useContext(ProductContext)
     const navigate= useNavigate()
 
     const user=true;
-     if(user) {return <Outlet/>} 
+     if(loggedInUser) {return <Outlet/>} 
      
      else{
         return (
@@ -15,7 +17,7 @@ export default function ProtectedRoutes() {
             <p className="mt-4 text-lg">You need to be logged in to access this page.</p>
             <button 
               className="mt-6 px-4 py-2 bg-blue-600 text-white rounded"
-              onClick={() => navigate('/') } 
+              onClick={() => navigate('/login') } 
             >
               Go to Login
             </button>

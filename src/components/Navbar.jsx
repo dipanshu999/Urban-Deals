@@ -2,13 +2,20 @@ import React, { useContext, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { ProductContext } from '../Utils/Context'
 import './Loader/cart.css'
+import { account } from '../Utils/appwrite';
 
 import Mode from './Mode'
+import { toast } from 'react-toastify'
 
 export default function Navbar() {
-  const {navToggle,setNavToggle,darkMode,setMode,cartProducts,products, setFilteredProducts} = useContext(ProductContext);
-
+  const {navToggle,setNavToggle,darkMode,setMode,cartProducts,products, setFilteredProducts,loggedInUser,setLoggedInUser} = useContext(ProductContext);
   const [value,setValue]=useState('')
+
+  let logOut= async () => {
+    await account.deleteSession('current');
+    setLoggedInUser(null);
+    toast.success('Logged out successfully')
+  }
   
 
   const search = (value) => {
@@ -53,10 +60,18 @@ export default function Navbar() {
         </div>  {/*Hambuger menu is hidden till laptop screen*/}   
 
 
-        <div  className={`  NavLinks  ${navToggle?'absolute':'hidden'}  right-0 mt-[9.2em] tab:m-0  tab:static tab:flex navLinks text-4xl `} >
+        <div  className={`  NavLinks  ${navToggle?'absolute':'hidden'}  right-0 mt-[9.2em] tab:m-0  tab:static tab:flex navLinks text-3xl `} >
 
-          <div className={ `list-none ${darkMode?'bg-[#913df8] text-[#FEDC00]' : 'bg-[#FEDC00] text-[#7924DE]'} gap-6 rounded-md p-6 px-12 mob:px-24 items-center flex flex-col tab:m-0 tab:p-0 tab:bg-none tab:flex-row tab:gap-10 font-semibold`}>
-            <Mode setMode={setMode} />
+          <div className={ `list-none ${darkMode?'bg-[#913df8] text-[#FEDC00]' : 'bg-[#FEDC00] text-[#7924DE]'} gap-6 rounded-md p-6 px-12 mob:px-24 items-center flex flex-col tab:m-0 tab:p-0 tab:bg-none tab:items-center tab:flex-row tab:gap-10 font-medium`}>
+            
+            {!loggedInUser
+                    ?
+                <NavLink onClick={()=>setNavToggle(false)} to={'/login'}>Login</NavLink>
+                    :
+                <NavLink onClick={()=>{setNavToggle(false);logOut()}} to={'/'}>Logout</NavLink>
+            }
+            <NavLink onClick={()=>setNavToggle(false)} to={'/about'}>About</NavLink>
+            
             
             <NavLink to={'/cart'} onClick={()=>setNavToggle(false)}> 
               <div className=" cart w-9 pt-2 relative "> 
@@ -65,7 +80,8 @@ export default function Navbar() {
               </div> 
             </NavLink>
             
-            <NavLink onClick={()=>setNavToggle(false)} to={'/about'}>About</NavLink>
+            <Mode setMode={setMode} />
+            
           </div>  
         </div>
       </div>
