@@ -35,12 +35,16 @@ export default function Login() {
         <button className='bg-green-400' type="button" onClick={() => login(email, password)}>
           Login
         </button>
-
-        <button className='bg-red-400' onClick={async () => {
-    await account.deleteSession('current');
-    setLoggedInUser(null);
-    toast.success('Logged out successfully')
-  }}>LogOut</button>
+    <br />
+        <button className='bg-red-400' 
+          type='button'
+          onClick={async() => {
+            await account.deleteSession('current');
+            setLoggedInUser(null);
+            toast.success('Logged out successfully')
+          }}>
+            LogOut
+        </button>
 
       </form>
 
