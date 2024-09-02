@@ -25,13 +25,13 @@ export default function App() {
           <Route path='/login' element={<Login/>} />
           <Route path='/register' element={<SignUp/>} />
 
-          <Route element={<ProtectedRoutes/>} >
+          {/* <Route element={<ProtectedRoutes/>} > */}
             <Route path='/product/:id' element={ <Product/>}/>
             <Route path='/edit/:id' element={ <Edit/>}/>
             <Route path='/create' element={ <Create/>}/>
             <Route path='/cart' element={ <Cart/>}/>
             <Route path='/about' element={ <About/>}/>
-          </Route>
+          {/* </Route> */}
         </Routes>
       </div>
     </>
