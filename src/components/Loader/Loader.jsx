@@ -7,14 +7,14 @@ export default function Loader() {
       <svg viewBox="0 0 100 100">
         <defs>
           <filter id="shadow">
-            <feDropShadow dx="0" dy="0" stdDeviation="2.4" floodColor="#fc6767"/>
+            <feDropShadow dx="0" dy="0" stdDeviation="2.4" floodColor="#913df8"/>
           </filter>
         </defs>
         <circle
           id="spinner"
           style={{
             fill: 'transparent',
-            stroke: '#dd2476',
+            stroke: '#913df8',
             strokeWidth: '7px',
             strokeLinecap: 'round',
             filter: 'url(#shadow)'

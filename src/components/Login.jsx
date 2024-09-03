@@ -3,53 +3,62 @@ import { account, ID } from '../Utils/appwrite';
 import {useNavigate} from 'react-router-dom'
 import { ProductContext } from '../Utils/Context';
 import { toast } from 'react-toastify';
+import Loader from './Loader/Loader';
 
 export default function Login() {
-    const{loggedInUser, setLoggedInUser}=useContext(ProductContext)
+    const{loggedInUser, setLoggedInUser,loading,setLoading}=useContext(ProductContext)
 
     const navigate=useNavigate()
     
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [name, setName] = useState('');
   
     async function login(email, password) {
-      await account.createEmailPasswordSession(email, password);
-      setLoggedInUser(await account.get());
-      navigate('/')
-      toast.success('Logged in successfully')
+      try{
+        setLoading(true);
+        await account.createEmailPasswordSession(email, password);
+        setLoggedInUser(await account.get());
+        navigate('/')
+        toast.success('Logged in successfully')
     }
-    console.log(loggedInUser)
+    catch(err){
+        toast.error('Enter correct details')
+        console.log(err)
+      }
+    finally{
+      setLoading(false);
+    }
+    }
+    // console.log(loggedInUser)
   
   return (
+    <>
+    { 
+      loading
+        ?
+      <Loader/>
+        :
     <div>
-       <p>
-        {loggedInUser ? `Logged in as ${loggedInUser.name}` : 'Not logged in'}
-       </p>
+  
+    <div className="form-container w-[20rem] border rounded-lg shadow-xl h-[18rem] mx-auto mt-8">
 
-      <form>
-        <input className='border border-black' type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
-        <input className='border border-black' type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
-        {/*   <input className='border border-black' type="text" placeholder="Name" value={name} onChange={e => setName(e.target.value)} /> */}
+      <form className=' w-full '>
 
-        <button className='bg-green-400' type="button" onClick={() => login(email, password)}>
+        <div className=' mt-6 '>
+          <input className='border rounded-md border-slate-500 block mx-auto w-[70%] py-2 pl-1' type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
+          <input className='border rounded-md border-slate-500 block mx-auto w-[70%] py-2 pl-1 mt-2' type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
+        </div>
+
+        <button className='bg-black text-white font-semibold mx-auto block mt-5 p-2 px-4 rounded-lg ' type="button" onClick={() => login(email, password)}>
           Login
-        </button>
-    <br />
-        <button className='bg-red-400' 
-          type='button'
-          onClick={async() => {
-            await account.deleteSession('current');
-            setLoggedInUser(null);
-            toast.success('Logged out successfully')
-          }}>
-            LogOut
         </button>
 
       </form>
 
-      <p className='mt-8'>Don't have account,<span className='text-blue-600 font-semibold' onClick={()=>navigate('/register')}>Sign up</span>   </p>
-    </div> 
+      <p className='mt-6 text-center '>Don't have account,<span className='text-blue-600 font-semibold hover:cursor-pointer' onClick={()=>navigate('/register')}>Sign up</span>   </p>
+    </div>
+    </div> }
     
+  </>
   )
 }

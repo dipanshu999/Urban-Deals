@@ -60,7 +60,7 @@ export default function Navbar() {
         </div>  {/*Hambuger menu is hidden till laptop screen*/}   
 
 
-        <div  className={`  NavLinks  ${navToggle?'absolute':'hidden'}  right-0 mt-[9.2em] tab:m-0  tab:static tab:flex navLinks text-3xl `} >
+        <div  className={`  NavLinks  ${navToggle?'absolute':'hidden'} border-l border-r border-b border-slate-400 right-4 rounded-lg tab:border-none mt-[11.3em] tab:m-0  tab:static tab:flex navLinks text-3xl `} >
 
           <div className={ `list-none ${darkMode?'bg-[#913df8] text-[#FEDC00]' : 'bg-[#FEDC00] text-[#7924DE]'} gap-6 rounded-md p-6 px-12 mob:px-24 items-center flex flex-col tab:m-0 tab:p-0 tab:bg-none tab:items-center tab:flex-row tab:gap-10 font-medium`}>
             
@@ -68,7 +68,7 @@ export default function Navbar() {
                     ?
                 <NavLink onClick={()=>setNavToggle(false)} to={'/login'}>Login</NavLink>
                     :
-                <NavLink onClick={()=>{setNavToggle(false);logOut()}} to={'/'}>Logout</NavLink>
+                <NavLink onClick={()=>{setNavToggle(false);logOut()}} to={'/login'}>Logout</NavLink>
             }
             <NavLink onClick={()=>setNavToggle(false)} to={'/about'}>About</NavLink>
             
