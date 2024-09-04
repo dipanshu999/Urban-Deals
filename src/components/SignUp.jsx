@@ -36,7 +36,7 @@ export default function SignUp() {
         toast.success('Logged in successfully')
     }
     catch(err){
-        toast.error('Enter correct details')
+        toast.error('Some error occured')
         console.log(err)
       }
     finally{

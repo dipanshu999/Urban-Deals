@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { account, ID } from '../Utils/appwrite';
 import {useNavigate} from 'react-router-dom'
 import { ProductContext } from '../Utils/Context';
@@ -9,9 +9,26 @@ export default function Login() {
     const{loggedInUser, setLoggedInUser,loading,setLoading}=useContext(ProductContext)
 
     const navigate=useNavigate()
-    
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [activeSession, setActiveSession] = useState(false);
+
+    useEffect(() => {
+      // Check for an active session when the component mounts
+      const checkSession = async () => {
+          try {
+              setLoading(true);
+              const session = await account.get(); // Fetch current session
+              setLoggedInUser(session);
+              setActiveSession(true); // Set active session to true if a session exists
+          } catch (err) {
+              console.log('No active session');
+          } finally {
+              setLoading(false);
+          }
+      };
+      checkSession();
+  }, []);
   
     async function login(email, password) {
       try{
@@ -22,7 +39,7 @@ export default function Login() {
         toast.success('Logged in successfully')
     }
     catch(err){
-        toast.error('Enter correct details')
+        toast.error('Some error occured')
         console.log(err)
       }
     finally{
@@ -30,14 +47,36 @@ export default function Login() {
     }
     }
     // console.log(loggedInUser)
+
+    async function logout() {
+      try {
+          setLoading(true);
+          await account.deleteSession('current'); // Logout the user
+          setActiveSession(false);
+          setLoggedInUser(null);
+          toast.success('Logged out successfully');
+      } catch (err) {
+          toast.error('Some error occurred');
+          console.log(err);
+      } finally {
+          setLoading(false);
+      }
+  }
   
   return (
     <>
     { 
       loading
-        ?
-      <Loader/>
-        :
+        ?(
+      <Loader/>):activeSession?(       // if active session is there 
+        <div className="min-h-screen flex flex-col items-center justify-center">
+        <p className="text-3xl text-red-500">!! You are already logged in.</p>
+        <button className="bg-black text-white font-semibold mt-4 p-2 px-4 rounded-lg" onClick={logout}>
+            Logout
+        </button>
+        </div>
+
+      ):
     <div className='min-h-screen'>
   
     <div className="form-container w-[20rem] border rounded-lg shadow-xl bg-white mx-auto mt-8">
