@@ -14,7 +14,7 @@ import Login from './components/Login'
 import SignUp from './components/SignUp'
 
 export default function App() {
-  let {darkMode,setNavToggle,navToggle}=useContext(ProductContext)
+  let {darkMode}=useContext(ProductContext)
   return (
     <>
       <div  className={`  max-w-[1400px] w-full  mx-auto ${darkMode?'bg-[#0e0e0e]': 'bg-white' } ` } >

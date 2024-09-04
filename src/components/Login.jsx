@@ -38,13 +38,17 @@ export default function Login() {
         ?
       <Loader/>
         :
-    <div>
+    <div className='min-h-screen'>
   
-    <div className="form-container w-[20rem] border rounded-lg shadow-xl  mx-auto mt-8">
+    <div className="form-container w-[20rem] border rounded-lg shadow-xl bg-white mx-auto mt-8">
+
+      <div className="logo h-14 w-14  mx-auto mt-2">
+        <img src="../Logo.png" alt="Logo" className='object-cover h-full' />
+      </div>
 
       <form className=' w-full '>
 
-        <div className=' mt-6 '>
+        <div className=' mt-4 '>
           <input className='border rounded-md border-slate-500 block mx-auto w-[70%] py-2 pl-1' type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
           <input className='border rounded-md border-slate-500 block mx-auto w-[70%] py-2 pl-1 mt-2' type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
         </div>
@@ -62,13 +66,16 @@ export default function Login() {
         <hr className='border border-slate-500 mt-3 w-[37%] mx-auto'/>
       </div>
 
-      <div className="O2auth mt-4 font-semibold">
-        <div className="google w-[80%] p-2 mx-auto border border-black rounded-md">
+      <div className="O2auth mt-4 font-semibold text-slate-600 pb-4">
+
+        <div className="google w-[70%] flex items-center justify-between px-5 p-2 mx-auto border border-slate-300 rounded-md ">
           <p>Login with google</p>
+          <img src="../google.webp" className='h-5 w-5' alt="" />
         </div>
 
-        <div className="github w-[80%] p-2 mx-auto border border-black rounded-md mt-2">
+        <div className="github w-[70%] flex items-center justify-between px-5 p-2 mx-auto border border-slate-300 rounded-md mt-2">
           <p>Login with github</p>
+          <img src="../github.webp" className='h-5 w-5' alt="" />
         </div>
       </div>
 

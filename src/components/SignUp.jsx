@@ -41,17 +41,20 @@ export default function SignUp() {
       }
     finally{
       setLoading(false);
-    }
+      }
     }
 
   return (
-    <div>
+    <div className='min-h-screen '>
       
-  
      {loading?<Loader/>
           :
-       <div className="form-container w-[20rem] border rounded-lg shadow-xl h-[18rem] mx-auto mt-8">
+       <div className="form-container w-[20rem] border rounded-lg shadow-xl bg-white pb-4 mx-auto mt-8">
 
+        <div className="logo h-14 w-14  mx-auto mt-2">
+          <img src="../Logo.png" alt="Logo" className='object-cover h-full' />
+        </div>
+      
         <form className=' w-full '>
 
           <div className=' mt-6 '>
