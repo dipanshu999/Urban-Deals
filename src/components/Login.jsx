@@ -40,7 +40,7 @@ export default function Login() {
         :
     <div>
   
-    <div className="form-container w-[20rem] border rounded-lg shadow-xl h-[18rem] mx-auto mt-8">
+    <div className="form-container w-[20rem] border rounded-lg shadow-xl  mx-auto mt-8">
 
       <form className=' w-full '>
 
@@ -49,13 +49,29 @@ export default function Login() {
           <input className='border rounded-md border-slate-500 block mx-auto w-[70%] py-2 pl-1 mt-2' type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
         </div>
 
-        <button className='bg-black text-white font-semibold mx-auto block mt-5 p-2 px-4 rounded-lg ' type="button" onClick={() => login(email, password)}>
+      <p className='mt-3 text-center text-sm'>Don't have account,<span className='text-blue-600 font-semibold hover:cursor-pointer' onClick={()=>navigate('/register')}>Sign up</span>   </p>
+     
+        <button className='bg-black text-white font-semibold mx-auto block mt-4 p-2 px-4 rounded-lg ' type="button" onClick={() => login(email, password)}>
           Login
         </button>
-
       </form>
 
-      <p className='mt-6 text-center '>Don't have account,<span className='text-blue-600 font-semibold hover:cursor-pointer' onClick={()=>navigate('/register')}>Sign up</span>   </p>
+      <div className='flex mt-2'>
+        <hr className='border border-slate-500 mt-3 w-[37%] mx-auto'/>
+        <p className='text-slate-500'>OR</p>
+        <hr className='border border-slate-500 mt-3 w-[37%] mx-auto'/>
+      </div>
+
+      <div className="O2auth mt-4 font-semibold">
+        <div className="google w-[80%] p-2 mx-auto border border-black rounded-md">
+          <p>Login with google</p>
+        </div>
+
+        <div className="github w-[80%] p-2 mx-auto border border-black rounded-md mt-2">
+          <p>Login with github</p>
+        </div>
+      </div>
+
     </div>
     </div> }
     

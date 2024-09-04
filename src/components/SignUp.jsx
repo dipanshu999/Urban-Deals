@@ -61,8 +61,10 @@ export default function SignUp() {
 
           </div>
 
+        <p className='mt-3 text-center text-sm'>Already have account,<span className='text-blue-600 font-bold hover:cursor-pointer' onClick={()=>navigate('/login')}> Login</span>   </p>
+            
             <button
-              className='bg-black  text-white font-semibold mx-auto block mt-5 p-2 px-4 rounded-lg'
+              className='bg-black  text-white font-semibold mx-auto block mt-3 p-2 px-4 rounded-lg'
               type="button"
               onClick={signUp}
             >
@@ -70,7 +72,6 @@ export default function SignUp() {
             </button>
         </form>
             
-        <p className='mt-6 text-center '>Already have account,<span className='text-blue-600 font-bold hover:cursor-pointer' onClick={()=>navigate('/login')}> Login</span>   </p>
       </div>
     }
   </div>
