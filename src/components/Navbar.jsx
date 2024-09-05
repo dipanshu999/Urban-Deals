@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { ProductContext } from '../Utils/Context'
 import './Loader/cart.css'
 import { account } from '../Utils/appwrite';
@@ -8,6 +8,7 @@ import Mode from './Mode'
 import { toast } from 'react-toastify'
 
 export default function Navbar() {
+  const navigate=useNavigate()
   const {navToggle,setNavToggle,darkMode,setMode,cartProducts,products, setFilteredProducts,loggedInUser,setLoggedInUser} = useContext(ProductContext);
   const [value,setValue]=useState('')
 
@@ -15,6 +16,7 @@ export default function Navbar() {
     await account.deleteSession('current');
     setLoggedInUser(null);
     toast.success('Logged out successfully')
+    navigate('/login')
   }
   
 
@@ -68,7 +70,7 @@ export default function Navbar() {
                     ?
                 <NavLink onClick={()=>setNavToggle(false)} to={'/login'}>Login</NavLink>
                     :
-                <NavLink onClick={()=>{setNavToggle(false);logOut()}} to={'/login'}>Logout</NavLink>
+                <NavLink onClick={()=>{setNavToggle(false);logOut()}}>Logout</NavLink>
             }
             <NavLink onClick={()=>setNavToggle(false)} to={'/about'}>About</NavLink>
             
