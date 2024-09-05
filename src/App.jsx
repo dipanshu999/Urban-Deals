@@ -32,7 +32,7 @@ export default function App() {
     checkSession();
   }, [setLoggedInUser, setLoading]);
 
-  return (
+  return (  
     <>
       <div className={`max-w-[1400px] w-full mx-auto ${darkMode ? 'bg-[#0e0e0e]' : 'bg-white'}`}>
         <Navbar />

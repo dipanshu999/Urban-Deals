@@ -63,6 +63,10 @@ export default function Login() {
         }
     }
 
+    let googleLogin = async()=>{
+        account.createOAuth2Session('google', 'http://localhost:5173/')
+    }
+
     return (
         <>
             {loading ? (
@@ -127,11 +131,11 @@ export default function Login() {
                             <hr className='border border-slate-500 mt-3 w-[37%] mx-auto' />
                         </div>
                         <div className="O2auth mt-4 font-semibold text-slate-600 pb-4">
-                            <div className="google w-[70%] flex items-center justify-between px-5 p-2 mx-auto border border-slate-300 rounded-md">
+                            <div onClick={googleLogin} className="google hover:cursor-pointer w-[70%] flex items-center justify-between px-5 p-2 mx-auto border border-slate-300 rounded-md">
                                 <p>Login with Google</p>
                                 <img src="../google.webp" className='h-5 w-5' alt="Google" />
                             </div>
-                            <div className="github w-[70%] flex items-center justify-between px-5 p-2 mx-auto border border-slate-300 rounded-md mt-2">
+                            <div className="github w-[70%] hover:cursor-pointer flex items-center justify-between px-5 p-2 mx-auto border border-slate-300 rounded-md mt-2">
                                 <p>Login with GitHub</p>
                                 <img src="../github.webp" className='h-5 w-5' alt="GitHub" />
                             </div>
