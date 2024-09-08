@@ -81,7 +81,7 @@ export default function Login() {
         try {
             setLoading(true); 
             // let redirectURL = window.location.origin;
-            account.createOAuth2Session(OAuthProvider.Github, 'https://urban-deals.netlify.app'); // No need for await here
+            account.createOAuth2Session('github', 'https://urban-deals.netlify.app'); // No need for await here
             toast.success('Logged in successfully with Github');
             // The redirection happens here, so the code below won't be executed immediately
         } catch (err) {
