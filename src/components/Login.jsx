@@ -66,11 +66,8 @@ export default function Login() {
 
     let googleLogin = async()=>{
         try{
-        let redirectURL=window.location.origin;
-        account.createOAuth2Session('google', redirectURL);
-        const session = await account.get(); // After OAuth login, get the active session
-        setLoggedInUser(session); // Set the logged-in user
-        navigate('/'); // Redirect to the home page
+        // let redirectURL=window.location.origin;
+        account.createOAuth2Session('google', 'https://urban-deals.netlify.app');
         toast.success('Logged in with Google successfully');
     }catch(err){
         console.log('OAuth login error:', err);
@@ -82,9 +79,10 @@ export default function Login() {
 
     let githubLogin = async () => {
         try {
-            setLoading(true); // Set loading to true at the start
+            setLoading(true); 
             // let redirectURL = window.location.origin;
             account.createOAuth2Session(OAuthProvider.Github, 'https://urban-deals.netlify.app'); // No need for await here
+            toast.success('Logged in successfully with Github');
             // The redirection happens here, so the code below won't be executed immediately
         } catch (err) {
             console.log('OAuth login error:', err);
@@ -118,56 +116,36 @@ export default function Login() {
                         <div className="logo h-14 w-14 mx-auto mt-2">
                             <img src="../Logo.png" alt="Logo" className='object-cover h-full' />
                         </div>
-                        <form className='w-full'>
-                            <div className='mt-4'>
-                                <input
-                                    className='border rounded-md border-slate-500 block mx-auto w-[70%] py-2 pl-1'
-                                    type="email"
-                                    placeholder="Email"
-                                    value={email}
-                                    onChange={e => setEmail(e.target.value)}
-                                />
-                                <input
-                                    className='border rounded-md border-slate-500 block mx-auto w-[70%] py-2 pl-1 mt-2'
-                                    type="password"
-                                    placeholder="Password"
-                                    value={password}
-                                    onChange={e => setPassword(e.target.value)}
-                                />
-                            </div>
-                            <p className='mt-3 text-center text-sm'>
-                                Don't have an account?{' '}
-                                <span
-                                    className='text-blue-600 font-semibold hover:cursor-pointer'
-                                    onClick={() => navigate('/register')}
-                                >
-                                    Sign up
-                                </span>
-                            </p>
-                            <button
-                                className='bg-black text-white font-semibold mx-auto block mt-4 p-2 px-4 rounded-lg'
-                                type="button"
-                                onClick={() => login(email, password)}
-                                disabled={loading} // Disable button during login request
-                            >
-                                Login
-                            </button>
-                        </form>
-                        <div className='flex mt-2'>
-                            <hr className='border border-slate-500 mt-3 w-[37%] mx-auto' />
-                            <p className='text-slate-500'>OR</p>
-                            <hr className='border border-slate-500 mt-3 w-[37%] mx-auto' />
-                        </div>
-                        <div className="O2auth mt-4 font-semibold text-slate-600 pb-4">
-                            <div onClick={googleLogin} className="google hover:cursor-pointer w-[70%] flex items-center justify-between px-5 p-2 mx-auto border border-slate-300 rounded-md">
-                                <p>Login with Google</p>
-                                <img src="../google.webp" className='h-5 w-5' alt="Google" />
-                            </div>
-                            <div onClick={githubLogin} className="github w-[70%] hover:cursor-pointer flex items-center justify-between px-5 p-2 mx-auto border border-slate-300 rounded-md mt-2">
-                                <p>Login with GitHub</p>
-                                <img src="../github.webp" className='h-5 w-5' alt="GitHub" />
-                            </div>
-                        </div>
+                        <form className="w-full">
+    <div className="mt-4">
+        <input className="border rounded-md border-slate-500 block mx-auto w-[70%] py-2 pl-1" type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
+        <input className="border rounded-md border-slate-500 block mx-auto w-[70%] py-2 pl-1 mt-2" type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
+    </div>
+    <p className="mt-3 text-center text-sm">
+        Don't have an account?{' '}
+        <span className="text-blue-600 font-semibold hover:cursor-pointer" onClick={() => navigate('/register')}>Sign up</span>
+    </p>
+    <button className="bg-black text-white font-semibold mx-auto block mt-4 p-2 px-4 rounded-lg" type="button" onClick={() => login(email, password)} disabled={loading}>
+        Login
+    </button>
+</form>
+
+<div className="flex mt-2">
+    <hr className="border border-slate-500 mt-3 w-[37%] mx-auto" />
+    <p className="text-slate-500">OR</p>
+    <hr className="border border-slate-500 mt-3 w-[37%] mx-auto" />
+</div>
+<div className="O2auth mt-4 font-semibold text-slate-600 pb-4">
+    <div onClick={googleLogin} className="google hover:cursor-pointer w-[70%] flex items-center justify-between px-5 p-2 mx-auto border border-slate-300 rounded-md">
+        <p>Login with Google</p>
+        <img src="../google.webp" className="h-5 w-5" alt="Google" />
+    </div>
+    <div onClick={githubLogin} className="github w-[70%] hover:cursor-pointer flex items-center justify-between px-5 p-2 mx-auto border border-slate-300 rounded-md mt-2">
+        <p>Login with GitHub</p>
+        <img src="../github.webp" className="h-5 w-5" alt="GitHub" />
+    </div>
+</div>
+
                     </div>
                 </div>
             )}
