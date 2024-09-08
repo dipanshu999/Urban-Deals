@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { account } from '../Utils/appwrite';
+import { OAuthProvider } from 'appwrite';
 import { useNavigate } from 'react-router-dom';
 import { ProductContext } from '../Utils/Context';
 import { toast } from 'react-toastify';
@@ -64,9 +65,36 @@ export default function Login() {
     }
 
     let googleLogin = async()=>{
-        account.createOAuth2Session('google', 'http://localhost:5173/')
+        try{
+        let redirectURL=window.location.origin;
+        account.createOAuth2Session('google', redirectURL);
+        const session = await account.get(); // After OAuth login, get the active session
+        setLoggedInUser(session); // Set the logged-in user
+        navigate('/'); // Redirect to the home page
+        toast.success('Logged in with Google successfully');
+    }catch(err){
+        console.log('OAuth login error:', err);
+        toast.error('Failed to login with Google');
+    }finally{
+        setLoading(false);
+        }
     }
 
+    let githubLogin = async () => {
+        try {
+            setLoading(true); // Set loading to true at the start
+            // let redirectURL = window.location.origin;
+            account.createOAuth2Session(OAuthProvider.Github, 'https://urban-deals.netlify.app'); // No need for await here
+            // The redirection happens here, so the code below won't be executed immediately
+        } catch (err) {
+            console.log('OAuth login error:', err);
+            toast.error('Failed to login with GitHub');
+        } finally {
+            setLoading(false); // Ensure loading is reset
+        }
+    };
+    
+    
     return (
         <>
             {loading ? (
@@ -135,7 +163,7 @@ export default function Login() {
                                 <p>Login with Google</p>
                                 <img src="../google.webp" className='h-5 w-5' alt="Google" />
                             </div>
-                            <div className="github w-[70%] hover:cursor-pointer flex items-center justify-between px-5 p-2 mx-auto border border-slate-300 rounded-md mt-2">
+                            <div onClick={githubLogin} className="github w-[70%] hover:cursor-pointer flex items-center justify-between px-5 p-2 mx-auto border border-slate-300 rounded-md mt-2">
                                 <p>Login with GitHub</p>
                                 <img src="../github.webp" className='h-5 w-5' alt="GitHub" />
                             </div>
