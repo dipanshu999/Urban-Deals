@@ -68,7 +68,7 @@ export default function Login() {
         try{
         // let redirectURL=window.location.origin;
         account.createOAuth2Session('google', 'https://urban-deals.netlify.app');
-        toast.success('Logged in with Google successfully');
+        toast.success('Login with Google successfull');
     }catch(err){
         console.log('OAuth login error:', err);
         toast.error('Failed to login with Google');
@@ -82,11 +82,11 @@ export default function Login() {
             setLoading(true); 
             // let redirectURL = window.location.origin;
             account.createOAuth2Session('github', 'https://urban-deals.netlify.app'); // No need for await here
-            toast.success('Logged in successfully with Github');
+            toast.success('Login with Github successfull');
             // The redirection happens here, so the code below won't be executed immediately
         } catch (err) {
             console.log('OAuth login error:', err);
-            toast.error('Failed to login with GitHub');
+            toast.error('Failed to login with Github');
         } finally {
             setLoading(false); // Ensure loading is reset
         }
@@ -100,9 +100,9 @@ export default function Login() {
             ) : activeSession ? (
                 // If an active session exists, show the logout UI
                 <div className="min-h-screen flex flex-col items-center justify-center">
-                    <p className="text-3xl text-red-500">You are already logged in.</p>
+                    <p className="text-3xl text-red-500 block w-[90vw] text-center font-semibold">!! You are already logged in.</p>
                     <button
-                        className="bg-black text-white font-semibold mt-4 p-2 px-4 rounded-lg"
+                        className="bg-black text-white border border-white font-semibold mt-4 p-2 px-4 rounded-lg"
                         onClick={logout}
                         disabled={loading} // Disable button when logging out
                     >
