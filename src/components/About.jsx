@@ -27,7 +27,19 @@ export default function About() {
   return (
     <div className=' mb-8 min-h-screen'>
 
-     
+      <div className="profile border rounded-xl shadow-xl py-4 mt-8 w-[90vw] mob:w-[75vw] tab:w-[60vw] lap:w-[40vw] mx-auto">
+        <div className="pic w-24 h-24 tab:w-32 tab:h-32 rounded-full mx-auto overflow-hidden">
+          <img className='w-full h-full object-cover' src='../my-pic.png' alt="profile" />
+        </div>
+
+        <div className="name">
+          <p className={`text-4xl font-semibold ${darkMode?'text-white': 'text-slate-700'} text-center`}>Dipanshu Pandey</p>
+        </div>
+
+        <div className="description w-[90%] mob:w-[90%] tab:w-[80%] mx-auto mt-4 ">
+          <p className={`text-center opacity-60 leading-5 ${darkMode?'text-white': 'text-slate-700'} `}> Frontend developer 🚀 Crafting Seamless UIs with - React JS ☢|| Javascript || Tailwind CSS || HTML || CSS || Context API || Git/GitHub</p>
+        </div>
+      </div>
 
 
       <div className='w-[95vw] mob:w-[75vw] tab:w-[70vw] lap:w-[60vw] mx-auto mt-12'>
