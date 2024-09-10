@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 
 export default function Product() {
   const navigate = useNavigate();
-  let { products, setProducts, cartHandle } = useContext(ProductContext);
+  let { products, setProducts, cartHandle ,darkMode} = useContext(ProductContext);
   const { id } = useParams();
   const [product, setProduct] = useState();
 
@@ -55,7 +55,7 @@ export default function Product() {
       </div>
 
       
-      <div className='bg-white w-[100vw] flex flex-col gap-5 mob:w-[80vw] mob:mt-16 py-12 my-4 tab:w-[80vw] tab:min-h-[70vh] tab:flex-row tab:gap-20 lap:w-[70vw] shadow-2xl rounded-2xl mx-auto mt-10 justify-center items-center'>
+      <div className={`bg-white w-[100vw] flex flex-col gap-5 mob:w-[80vw] mob:mt-16 py-12 my-4 tab:w-[80vw] tab:min-h-[70vh] tab:flex-row tab:gap-20 lap:w-[70vw] shadow-2xl ${darkMode? 'shadow-white shadow-md':null} rounded-2xl mx-auto mt-10 justify-center items-center`}>
         <div className="pic h-[12em] mob:h-[16em] tab:ml-2">
           <img src={image} className='h-full object-contain' alt={category} />
         </div>
