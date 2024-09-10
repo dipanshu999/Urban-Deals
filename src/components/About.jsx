@@ -25,7 +25,7 @@ export default function About() {
   };
 
   return (
-    <div className=' mb-8 min-h-screen'>
+    <div className=' mb-10 min-h-screen'>
 
       <div className="profile border rounded-xl shadow-xl py-4 mt-8 w-[90vw] mob:w-[75vw] tab:w-[60vw] lap:w-[40vw] mx-auto">
         <div className="pic w-24 h-24 tab:w-32 tab:h-32 rounded-full mx-auto overflow-hidden">
