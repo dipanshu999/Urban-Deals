@@ -118,12 +118,12 @@ export default function Login() {
                         </div>
                         <form className="w-full">
     <div className="mt-4">
-        <input className="border rounded-md border-slate-500 block mx-auto w-[70%] py-2 pl-1" type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
-        <input className="border rounded-md border-slate-500 block mx-auto w-[70%] py-2 pl-1 mt-2" type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
+        <input className="border rounded-md border-slate-500 block mx-auto w-[70%] py-3 pl-1" type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
+        <input className="border rounded-md border-slate-500 block mx-auto w-[70%] py-3 pl-1 mt-2" type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
     </div>
     <p className="mt-3 text-center text-sm">
         Don't have an account?{' '}
-        <span className="text-blue-600 font-semibold hover:cursor-pointer" onClick={() => navigate('/register')}>Sign up</span>
+        <span className="text-blue-600 font-semibold hover:cursor-pointer text-base" onClick={() => navigate('/register')}>Sign up</span>
     </p>
     <button className="bg-black text-white font-semibold mx-auto block mt-4 p-2 px-4 rounded-lg" type="button" onClick={() => login(email, password)} disabled={loading}>
         Login
