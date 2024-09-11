@@ -111,7 +111,7 @@ export default function Login() {
                 </div>
             ) : (
                 // If no active session exists, show the login form
-                <div className='min-h-screen'>
+                <div className='min-h-screen mt-16'>
                     <div className={`form-container w-[20rem] border rounded-lg shadow-xl bg-white mx-auto mt-8 ${darkMode ? 'shadow-slate-500' : null}`}>
                         <div className="logo h-14 w-14 mx-auto mt-2">
                             <img src="../Logo.png" alt="Logo" className='object-cover h-full' />

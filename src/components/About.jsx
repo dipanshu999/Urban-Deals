@@ -28,7 +28,6 @@ export default function About() {
 
       <div className="  profile border rounded-xl shadow-xl py-4 mt-8 w-[95vw] mob:w-[75vw] tab:w-[60vw] lap:w-[40vw] mx-auto">
         
-
         <div className=" pic w-24 h-24 tab:w-32 tab:h-32 rounded-full mx-auto overflow-hidden">
           <img className='w-full h-full object-cover' src='../my-pic.png' alt="profile" />
         </div>
@@ -38,8 +37,8 @@ export default function About() {
         </div>
 
         <div className="description w-[90%] mob:w-[90%] tab:w-[80%] mx-auto mt-6 ">
-          <p className={`text-center opacity-65 leading-[1.2rem] mob:leading-5 ${darkMode?'text-white': 'text-slate-700'} `}> <span className='text-blue-700  font-semibold'>Frontend developer</span>  🚀 Crafting Seamless UIs with - React JS ☢|| Javascript || Tailwind CSS || HTML || CSS || Context API || Git/GitHub</p>
-       
+          <p className={`text-center opacity-65 leading-[1.2rem]  mob:leading-5 ${darkMode?'text-white': 'text-slate-700'} `}> 
+            <span className='text-blue-700 shadow-lg shadow-blue-200 text-lg font-semibold'>Frontend developer</span>  🚀 Crafting Seamless UIs with - React JS ☢|| Javascript || Tailwind CSS || HTML || CSS || Context API || Git/GitHub</p>
         </div>
       </div>
 
