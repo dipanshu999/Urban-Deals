@@ -38,7 +38,8 @@ export default function About() {
         </div>
 
         <div className="description w-[90%] mob:w-[90%] tab:w-[80%] mx-auto mt-6 ">
-          <p className={`text-center opacity-80 leading-[1.2rem] mob:leading-5 ${darkMode?'text-white': 'text-slate-700'} `}> <span className='text-blue-700  font-semibold'>Frontend developer</span>  🚀 Crafting Seamless UIs with - React JS ☢|| Javascript || Tailwind CSS || HTML || CSS || Context API || Git/GitHub</p>
+          <p className={`text-center opacity-65 leading-[1.2rem] mob:leading-5 ${darkMode?'text-white': 'text-slate-700'} `}> <span className='text-blue-700  font-semibold'>Frontend developer</span>  🚀 Crafting Seamless UIs with - React JS ☢|| Javascript || Tailwind CSS || HTML || CSS || Context API || Git/GitHub</p>
+       
         </div>
       </div>
 
