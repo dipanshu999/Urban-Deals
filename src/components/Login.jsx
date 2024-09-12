@@ -95,59 +95,57 @@ export default function Login() {
     
     return (
         <>
-            {loading ? (
-                <Loader />
-            ) : activeSession ? (
-                // If an active session exists, show the logout UI
-                <div className="min-h-screen flex flex-col items-center justify-center">
-                    <p className="text-3xl text-red-500 block w-[90vw] text-center font-semibold">!! You are already logged in.</p>
-                    <button
-                        className="bg-black text-white border border-white font-semibold mt-4 p-2 px-4 rounded-lg"
-                        onClick={logout}
-                        disabled={loading} // Disable button when logging out
-                    >
-                        Logout
-                    </button>
-                </div>
-            ) : (
+        {loading ? (
+            <Loader />
+        ) : activeSession ? (
+            // If an active session exists, show the logout UI
+            <div className="min-h-screen flex flex-col items-center justify-center">
+                <p className="text-3xl text-red-500 block w-[90vw] text-center font-semibold">!! You are already logged in.</p>
+                <button  className="bg-black text-white border border-white font-semibold mt-4 p-2 px-4 rounded-lg" onClick={logout} disabled={loading}>
+                    Logout  
+                </button>
+            </div>
+        ) : (
+    
                 // If no active session exists, show the login form
-                <div className='min-h-screen mt-16'>
-                    <div className={`form-container w-[20rem] border rounded-lg shadow-xl bg-white mx-auto mt-8 ${darkMode ? 'shadow-slate-500' : null}`}>
-                        <div className="logo h-14 w-14 mx-auto mt-2">
-                            <img src="../Logo.png" alt="Logo" className='object-cover h-full' />
-                        </div>
-                        <form className="w-full">
-    <div className="mt-4">
-        <input className="border rounded-md border-slate-500 block mx-auto w-[70%] py-3 pl-1" type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
-        <input className="border rounded-md border-slate-500 block mx-auto w-[70%] py-3 pl-1 mt-2" type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
-    </div>
-    <p className="mt-3 text-center text-sm">
-        Don't have an account?{' '}
-        <span className="text-blue-600 font-semibold hover:cursor-pointer text-base" onClick={() => navigate('/register')}>Sign up</span>
-    </p>
-    <button className="bg-black text-white font-semibold mx-auto block mt-4 p-2 px-4 rounded-lg" type="button" onClick={() => login(email, password)} disabled={loading}>
-        Login
-    </button>
-</form>
+     <div className='min-h-screen mt-16'>
+        <div className={`form-container w-[20rem] border rounded-lg shadow-xl bg-white mx-auto mt-8 ${darkMode ? 'shadow-slate-500' : null}`}>
+             
+        <div className="logo h-14 w-14 mx-auto mt-2">
+            <img src="../Logo.png" alt="Logo" className='object-cover h-full' />
+        </div>
 
-<div className="flex mt-2">
-    <hr className="border border-slate-500 mt-3 w-[37%] mx-auto" />
-    <p className="text-slate-500">OR</p>
-    <hr className="border border-slate-500 mt-3 w-[37%] mx-auto" />
-</div>
-<div className="O2auth mt-4 font-semibold text-slate-600 pb-4">
-    <div onClick={googleLogin} className="google hover:cursor-pointer w-[70%] flex items-center justify-between px-5 p-2 mx-auto border border-slate-300 rounded-md">
-        <p>Login with Google</p>
-        <img src="../google.webp" className="h-5 w-5" alt="Google" />
-    </div>
-    <div onClick={githubLogin} className="github w-[70%] hover:cursor-pointer flex items-center justify-between px-5 p-2 mx-auto border border-slate-300 rounded-md mt-2">
-        <p>Login with GitHub</p>
-        <img src="../github.webp" className="h-5 w-5" alt="GitHub" />
-    </div>
-</div>
+        <form className="w-full">
+            <div className="mt-4">
+                <input className="border rounded-md border-slate-500 block mx-auto w-[70%] py-3 pl-1" type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
+                <input className="border rounded-md border-slate-500 block mx-auto w-[70%] py-3 pl-1 mt-2" type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
+            </div>
+            <p className="mt-3 text-center text-sm">
+                Don't have an account?{' '}
+                <span className="text-blue-600 font-semibold hover:cursor-pointer text-base" onClick={() => navigate('/register')}>Sign up</span>
+            </p>
+            <button className="bg-black text-white font-semibold mx-auto block mt-4 p-2 px-4 rounded-lg" type="button" onClick={() => login(email, password)} disabled={loading}>
+                Login
+            </button>
+        </form>
 
-                    </div>
-                </div>
+        <div className="flex mt-2">
+            <hr className="border border-slate-500 mt-3 w-[37%] mx-auto" />
+            <p className="text-slate-500">OR</p>
+            <hr className="border border-slate-500 mt-3 w-[37%] mx-auto" />
+        </div>
+        <div className="O2auth mt-4 font-semibold text-slate-600 pb-4">
+            <div onClick={googleLogin} className="google hover:cursor-pointer w-[70%] flex items-center justify-between px-5 p-2 mx-auto border border-slate-300 rounded-md">
+                <p>Login with Google</p>
+                <img src="../google.webp" className="h-5 w-5" alt="Google" />
+            </div>
+            <div onClick={githubLogin} className="github w-[70%] hover:cursor-pointer flex items-center justify-between px-5 p-2 mx-auto border border-slate-300 rounded-md mt-2">
+                <p>Login with GitHub</p>
+                <img src="../github.webp" className="h-5 w-5" alt="GitHub" />
+            </div>
+        </div>
+        </div>
+    </div>
             )}
         </>
     );
