@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import Product from './components/Product';
 import Create from './components/Create';
 import Edit from './components/Edit';
@@ -41,6 +41,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<SignUp />} />
+          <Route path="*" element={<div>404 Error !! Not found</div>} />
 
           <Route element={<ProtectedRoutes />}>
             <Route path="/product/:id" element={<Product />} />

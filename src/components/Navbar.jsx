@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { ProductContext } from '../Utils/Context'
 import './Loader/cart.css'
 import { account } from '../Utils/appwrite';
@@ -11,6 +11,9 @@ export default function Navbar() {
   const navigate=useNavigate()
   const {navToggle,setNavToggle,darkMode,setMode,cartProducts,products, setFilteredProducts,loggedInUser,setLoggedInUser} = useContext(ProductContext);
   const [value,setValue]=useState('')
+
+  const location =useLocation();
+  console.log(location.pathname);
 
   let logOut= async () => {
     await account.deleteSession('current');
@@ -38,13 +41,14 @@ export default function Navbar() {
           </div>
         </Link>
 
-        
-          
 
       <div className="seacrh--NavLinks flex items-center gap-4 mob:gap-6">
-        <div className="search">
+
+        { location.pathname ==='/' && 
+          <div className="search">
             <input type="text" onChange={(e)=>{search(e.target.value) ; setValue(e.target.value)}} className='border border-black w-24 mob:w-32 h-8 mob:h-9 pl-1 rounded-md mob:rounded-xl' value={value} placeholder='🔍Search'/>
-        </div>
+          </div>
+        }
 
         <div onClick={()=>setNavToggle(()=>!navToggle)} className='tab:hidden bg-[#a8212a] p-[0.3rem] mob:p-2 rounded-md' >
 
