@@ -14,12 +14,12 @@ export default function Home() {
   const [IsLiked,setIsLiked] = useState(false);
 
   
-    const handleLikeClick =()=>{
+    const handleLikeClick =(categories)=>{
+      console.log(categories)
       setTimeout(() => {
         setIsLiked(prev=>!prev);      // Liking code 
       }, 1000);
     }
-
 
    useEffect(()=>{
     //  FetchScrapedProducts()
@@ -85,7 +85,7 @@ export default function Home() {
             
           <div className={` ${IsLiked && 'blur-md cursor-not-allowed'} card-container gap-6 xsm:w-[92vw] xsm:gap-12 lap:w-[90%] mob:gap-12 lap:gap-16 mx-auto flex flex-wrap pt-6 justify-center`}>
             {filteredProducts.map(item => (
-                <Card item={item} handleLikeClick={handleLikeClick} IsLiked={IsLiked} />
+                <Card key={item.id} item={item} handleLikeClick={handleLikeClick} IsLiked={IsLiked} />
             ))}
           </div>
         </div>

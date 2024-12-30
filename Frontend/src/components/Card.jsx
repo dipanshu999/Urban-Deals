@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 
 export default function Card({item,handleLikeClick}) {
     let {darkMode}=useContext(ProductContext)
-    const {image,title,price,rating}=item;
+    const {image,title,price,rating,category}=item;
+
     function truncateText(text, wordLimit) {
       const words=text.split(' ');
       if (words.length <= wordLimit) {
@@ -19,7 +20,7 @@ export default function Card({item,handleLikeClick}) {
 
   return (
     <div className='relative  hover:scale-110  transition-transform ' >
-        <HeartIcon handleLikeClick={handleLikeClick}/>
+        <HeartIcon category={item.category} handleLikeClick={handleLikeClick}/>
 
         <Link key={item.id} to={`/product/${item.id}`}>
            

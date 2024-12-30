@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import heart from '../Loader/heart.svg'
 
-const HeartIcon = ({handleLikeClick}) => {
+const HeartIcon = ({handleLikeClick,category}) => {
   // State to track whether the heart is liked
   const [isLiked, setIsLiked] = useState(false);
 
@@ -11,7 +11,7 @@ const HeartIcon = ({handleLikeClick}) => {
   };
 
   return (
-    <div className=" absolute" onClick={handleLikeClick} >
+    <div className=" absolute" onClick={()=>handleLikeClick(category)} >
       {}
       <svg
         onClick={toggleLike} // Handle click event
