@@ -23,18 +23,19 @@
       // Wait for product elements to load
       await page.waitForSelector('._75nlfW', { timeout: 10000 });
 
-      const products = await page.evaluate(() => {
+      const products = await page.evaluate(()=> {
         const productElements = document.querySelectorAll('._75nlfW');
         const scrapedProducts = [];
 
         productElements.forEach((product) => {
-          const title = product.querySelector('.syl9yP')?.textContent?.trim() || '';
+          const brand = product.querySelector('.syl9yP')?.textContent?.trim() || '';
           const image = product.querySelector('._53J4C-')?.getAttribute('src') || '';
+          const title = product.querySelector('.WKTcLC')?.getAttribute('title') || '';
           const price = product.querySelector('.Nx9bqj')?.textContent?.trim() || '';
           const link = product.querySelector('.rPDeLR')?.href || '';
 
           if (title && price) {
-            scrapedProducts.push({ title, price, link, image });
+            scrapedProducts.push({ brand, price, title, link, image });
           }
         });
 

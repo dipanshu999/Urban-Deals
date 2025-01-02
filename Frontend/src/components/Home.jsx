@@ -4,36 +4,15 @@ import Card from './Card';
 import { ProductContext } from '../Utils/Context';
 import { Link, useLocation } from 'react-router-dom';
 import Loader from './Loader/Loader';
-import axios from 'axios'
 import ScrapingPopup from './ScrapingPopup';
+import { ScrapingContext } from '../Utils/ScrapinggContext';
 
 export default function Home() {
   const { products, loading, setLoading,navToggle,setNavToggle,filteredProducts, setFilteredProducts } = useContext(ProductContext);
   const { search } = useLocation();
+  const{IsLiked}=useContext(ScrapingContext)
   const category = decodeURIComponent(search.split('=')[1]);
-  const [IsLiked,setIsLiked] = useState(false);
 
-  
-    const handleLikeClick =(categories)=>{
-      console.log(categories)
-      setTimeout(() => {
-        setIsLiked(prev=>!prev);      // Liking code 
-      }, 1000);
-    }
-
-   useEffect(()=>{
-    //  FetchScrapedProducts()
-   },[])
-
-  async function FetchScrapedProducts(){
-    const data= await axios.get('http://localhost:3001/api/hello')
-    .then(res=>console.log(res.data))
-    .catch(err=>console.log(err))
-
-    const pro= await axios.get('http://localhost:3001/api/scrape?category=womensclothing')
-    .then(res=>console.log(res.data))
-    .catch(err=>console.log(err))
-  }
 
   useEffect(() => {
     if (category && category !== 'undefined') {
@@ -73,7 +52,7 @@ export default function Home() {
             <>
               <div className="fixed inset-0 bg-black bg-opacity-50 z-40"></div>  {/* Overlay div*/}
               <div className="fixed inset-0 z-50 flex justify-center items-center">
-                <ScrapingPopup setIsLiked={setIsLiked} />
+                <ScrapingPopup />
               </div>
             </>
                }
@@ -85,7 +64,7 @@ export default function Home() {
             
           <div className={` ${IsLiked && 'blur-md cursor-not-allowed'} card-container gap-6 xsm:w-[92vw] xsm:gap-12 lap:w-[90%] mob:gap-12 lap:gap-16 mx-auto flex flex-wrap pt-6 justify-center`}>
             {filteredProducts.map(item => (
-                <Card key={item.id} item={item} handleLikeClick={handleLikeClick} IsLiked={IsLiked} />
+                <Card key={item.id} item={item} IsLiked={IsLiked} />
             ))}
           </div>
         </div>

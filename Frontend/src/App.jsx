@@ -12,6 +12,7 @@ import ProtectedRoutes from './Utils/ProtectedRoutes';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 import { account } from './Utils/appwrite'; // Import the Appwrite account
+import ScrapedProducts from './components/ScrapedProducts';
 
 export default function App() {
   let { darkMode, loggedInUser, setLoggedInUser, setLoading } = useContext(ProductContext);
@@ -49,6 +50,7 @@ export default function App() {
             <Route path="/create" element={<Create />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/about" element={<About />} />
+            <Route path="/scraped-products/:category" element={<ScrapedProducts />} />
           </Route>
         </Routes>
       </div>
