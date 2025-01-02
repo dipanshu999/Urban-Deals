@@ -3,7 +3,7 @@
   const scrapeProducts = async (category) => {
     try {
       const browser = await puppeteer.launch({
-        headless: 'new', // Use the new headless mode
+        headless: 'new', // Use the new headless modes
       });
 
       const page = await browser.newPage();
