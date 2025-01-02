@@ -7,12 +7,12 @@ export default function ScrapedProducts() {
     const query=useParams();
     const category=query.category
     useEffect(()=>{
-        FetchScrapedProducts()
+        // FetchScrapedProducts()
         console.log(category)
        },[])
     
       async function FetchScrapedProducts(){
-        const data= await axios.get('http://localhost:3001/api/hello')
+        const data = await axios.get('http://localhost:3001/api/hello')
         .then(res=>console.log(res.data))
         .catch(err=>console.log(err))
     
