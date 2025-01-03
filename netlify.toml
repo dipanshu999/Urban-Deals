@@ -1,10 +1,9 @@
 [build]
+  base = "frontend"
   command = "npm run build"
-  publish = "frontend/dist"
-
+  publish = "../frontend/dist"
 
 [[redirects]]
-  # Example of a redirect from your previous `netlify.toml`
   from = "/*"
   to = "/index.html"
   status = 200
