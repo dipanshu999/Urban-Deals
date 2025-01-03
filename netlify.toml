@@ -1,0 +1,17 @@
+[build]
+  command = "npm run build"
+  publish = "frontend/dist"
+
+[functions]
+  directory = "backend"
+
+[[redirects]]
+  from = "/api/*"
+  to = "http://localhost:3001/:splat"
+  status = 200
+
+[[redirects]]
+  # Example of a redirect from your previous `netlify.toml`
+  from = "/*"
+  to = "/index.html"
+  status = 200
