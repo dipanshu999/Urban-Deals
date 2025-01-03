@@ -2,8 +2,6 @@
   command = "npm run build"
   publish = "frontend/dist"
 
-[functions]
-  directory = "backend"
 
 [[redirects]]
   # Example of a redirect from your previous `netlify.toml`
