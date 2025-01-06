@@ -7,7 +7,7 @@ export default function ScrapedProducts() {
     const query=useParams();
     const category=query.category
     useEffect(()=>{
-        // FetchScrapedProducts()
+        FetchScrapedProducts()
         console.log(category)
        },[])
     
