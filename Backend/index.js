@@ -6,7 +6,7 @@ const scrapeProducts=require('./Utils/scrapeProducts')
 
 // Configure CORS with specific options
 const corsOptions = {
-  origin: 'http://localhost:5173', // Your frontend URL
+  origin: ['http://localhost:5173','https://urban-deals.vercel.app'], // Your frontend URL
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true // Enable credentials (cookies, authorization headers, etc.)

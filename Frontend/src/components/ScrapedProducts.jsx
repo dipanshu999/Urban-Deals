@@ -1,7 +1,7 @@
   import React, { useEffect } from 'react'
   import { useParams } from 'react-router-dom'
   import axios from 'axios'
-  const backendUrl=import.meta.env.VITE_BACKEND_URL
+  const backendUrl = import.meta.env.VITE_API_URL
 
   export default function ScrapedProducts() {
       const query=useParams();
@@ -10,7 +10,7 @@
           FetchScrapedProducts()
           console.log(category)
         },[])
-      
+
         async function FetchScrapedProducts(){
           const data = await axios.get(`${backendUrl}/api/hello`)
           .then(res=>console.log(res.data))
