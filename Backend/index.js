@@ -1,7 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const PORT = 3001;
 const scrapeProducts=require('./Utils/scrapeProducts')
 
 // Configure CORS with specific options
@@ -14,8 +13,9 @@ const corsOptions = {
 
 // Apply configured CORS middleware
 app.use(cors(corsOptions));
-
 app.use(express.json());
+
+module.exports = app;
 
 app.get('/api/hello', (req, res) => {
   res.json({ message: 'Hello from backend!' });
@@ -37,7 +37,3 @@ app.get('/api/scrape', async (req, res) => {
   }
 });
 
-
-app.listen(PORT, () => {
-  console.log(`Backend running on port ${PORT}`);
-});
