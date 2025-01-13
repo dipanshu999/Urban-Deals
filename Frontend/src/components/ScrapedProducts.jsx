@@ -2,6 +2,7 @@
   import { useParams } from 'react-router-dom'
   import axios from 'axios'
   const backendUrl = import.meta.env.VITE_API_URL
+  let LocalHost='http://localhost:3001/'
 
   export default function ScrapedProducts() {
       const query=useParams();
@@ -16,7 +17,7 @@
           .then(res=>console.log(res.data))
           .catch(err=>console.log(err))
       
-          const pro= await axios.get(`${backendUrl}/api/scrape?category=${category}`)
+          const pro= await axios.get(`${LocalHost}/api/scrape?category=${category}`)
           .then(res=>console.log(res.data))
           .catch(err=>console.log(err))
         }

@@ -54,4 +54,4 @@ const scrapeProducts = async (category) => {
  }
 };
 
-module.exports = scrapeProducts;ow
+module.exports = scrapeProducts;
