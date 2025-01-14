@@ -17,7 +17,7 @@
           .then(res=>console.log(res.data))
           .catch(err=>console.log(err))
       
-          const pro= await axios.get(`${LocalHost}/api/scrape?category=${category}`)
+          const pro= await axios.get(`${backendUrl}/api/scrape?category=${category}`)
           .then(res=>console.log(res.data))
           .catch(err=>console.log(err))
         }
