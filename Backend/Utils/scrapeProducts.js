@@ -2,15 +2,17 @@ const puppeteer = require('puppeteer');
 
 const scrapeProducts = async (category) => {
  try {
-   const browser = await puppeteer.launch({
-     headless: 'new',
-     args: [
-       '--no-sandbox',
-       '--disable-setuid-sandbox', 
-       '--disable-dev-shm-usage',
-       '--disable-gpu'
-     ]
-   });
+  const browser = await puppeteer.launch({
+    args: [
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+        '--disable-dev-shm-usage',
+        '--disable-accelerated-2d-canvas',
+        '--disable-gpu',
+        '--single-process'
+    ],
+    headless: 'new'  // Use the new headless mode
+});
 
    const page = await browser.newPage();
    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36');
