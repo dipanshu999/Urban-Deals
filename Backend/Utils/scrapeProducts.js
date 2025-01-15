@@ -3,13 +3,13 @@ const puppeteer = require('puppeteer');
 const scrapeProducts = async (category) => {
  try {
   const browser = await puppeteer.launch({
+    executablePath: process.env.PUPPETEER_EXECUTABLE_PATH,
     args: [
         '--no-sandbox',
         '--disable-setuid-sandbox',
         '--disable-dev-shm-usage',
-        '--disable-accelerated-2d-canvas',
         '--disable-gpu',
-        '--single-process'
+        '--headless'
     ],
     headless: 'new'  // Use the new headless mode
 });
