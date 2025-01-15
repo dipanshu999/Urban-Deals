@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 apt-get update
-apt-get install -y chromium
+apt-get install -y chromium-browser
