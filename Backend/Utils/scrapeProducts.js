@@ -1,59 +1,48 @@
-const puppeteer = require('puppeteer');
+const axios = require('axios');
 
 const scrapeProducts = async (category) => {
- try {
-  const browser = await puppeteer.launch({
-    executablePath: process.env.PUPPETEER_EXECUTABLE_PATH,
-    args: [
-        '--no-sandbox',
-        '--disable-setuid-sandbox',
-        '--disable-dev-shm-usage',
-        '--disable-gpu',
-        '--headless'
-    ],
-    headless: 'new'  // Use the new headless mode
-});
+    try {
+        const apiKey = process.env.SCRAPING_BEE_API_KEY;
+        const targetUrl = `https://www.flipkart.com/search?q=${category}`;
+        
+        const response = await axios.get('https://app.scrapingbee.com/api/v1/', {
+            params: {
+                api_key: apiKey,
+                url: targetUrl,
+                wait: '1000',
+                block_resources: false
+            }
+        });
 
-   const page = await browser.newPage();
-   await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36');
+        const html = response.data;
+        const products = [];
 
-   const targetUrl = `https://www.flipkart.com/search?q=${category}`;
-   const allowedOrigins = process.env.ALLOWED_SCRAPING_ORIGINS?.split(',') || ['https://www.flipkart.com'];
-   
-   if (!allowedOrigins.some(origin => targetUrl.startsWith(origin))) {
-     throw new Error('Domain not allowed for scraping');
-   }
+        // Use regex or DOM parser to extract product data
+        const productElements = html.match(/<div class="_75nlfW".*?<\/div>/g) || [];
 
-   await page.goto(targetUrl, {
-     waitUntil: 'networkidle2',
-     timeout: 60000 
-   });
+        productElements.forEach(element => {
+            const brand = element.match(/class="syl9yP">(.*?)</) || '';
+            const image = element.match(/class="_53J4C-" src="(.*?)"/) || '';
+            const title = element.match(/class="WKTcLC" title="(.*?)"/) || '';
+            const price = element.match(/class="Nx9bqj">(.*?)</) || '';
+            const link = element.match(/class="rPDeLR" href="(.*?)"/) || '';
 
-   await page.waitForSelector('._75nlfW', { timeout: 10000 });
+            if (title && price) {
+                products.push({
+                    brand: brand[1] || '',
+                    image: image[1] || '',
+                    title: title[1] || '',
+                    price: price[1] || '',
+                    link: link[1] || ''
+                });
+            }
+        });
 
-   const products = await page.evaluate(() => {
-     const scrapedProducts = [];
-     document.querySelectorAll('._75nlfW').forEach(product => {
-       const brand = product.querySelector('.syl9yP')?.textContent?.trim() || '';
-       const image = product.querySelector('._53J4C-')?.getAttribute('src') || '';
-       const title = product.querySelector('.WKTcLC')?.getAttribute('title') || '';
-       const price = product.querySelector('.Nx9bqj')?.textContent?.trim() || '';
-       const link = product.querySelector('.rPDeLR')?.href || '';
-
-       if (title && price) {
-         scrapedProducts.push({ brand, price, title, link, image });
-       }
-     });
-     return scrapedProducts;
-   });
-
-   await browser.close();
-   return products;
-   
- } catch (error) {
-   console.error('Scraping error:', error);
-   throw error; // Propagate error to API handler
- }
+        return products;
+    } catch (error) {
+        console.error('Scraping error:', error);
+        throw error;
+    }
 };
 
 module.exports = scrapeProducts;
