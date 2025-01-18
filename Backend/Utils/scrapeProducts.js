@@ -1,51 +1,21 @@
 const scrapeProducts = async (category) => {
     try {
         const apiKey = process.env.SCRAPINGBEE_API_KEY;
-        if (!apiKey) {
-            throw new Error('ScrapingBee API key not found');
-        }
+        if (!apiKey) throw new Error('ScrapingBee API key not found');
 
-        const targetUrl = encodeURIComponent(`https://www.flipkart.com/search?q=${category}`);
-        const scrapingBeeUrl = `https://app.scrapingbee.com/api/v1/`;
+        const targetUrl = `https://www.flipkart.com/search?q=${category}`;
+        const url = `https://app.scrapingbee.com/api/v1/?api_key=${apiKey}&url=${encodeURIComponent(targetUrl)}&render_js=true&wait_for=._75nlfW`;
 
-        console.log('API Key:', apiKey.slice(0, 5) + '...'); // Log first 5 chars for verification
-        
-        const response = await fetch(scrapingBeeUrl, {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json'
-            },
-            params: {
-                api_key: apiKey,
-                url: targetUrl,
-                render_js: true,
-                wait_for: '._75nlfW',
-                extract_rules: {
-                    products: {
-                        selector: "._75nlfW",
-                        type: "list",
-                        output: {
-                            brand: ".syl9yP | text",
-                            image: "._53J4C- | attr:src",
-                            title: ".WKTcLC | attr:title",
-                            price: ".Nx9bqj | text",
-                            link: ".rPDeLR | attr:href"
-                        }
-                    }
-                }
-            }
-        });
-
-        console.log('Response status:', response.status);
-        const data = await response.text();
-        console.log('Response data:', data);
-
+        const response = await fetch(url);
         if (!response.ok) {
-            throw new Error(`ScrapingBee API error: ${response.status} - ${data}`);
+            const error = await response.text();
+            throw new Error(`ScrapingBee API error: ${response.status} - ${error}`);
         }
 
-        return JSON.parse(data);
+        const html = await response.text();
+        console.log('Response received:', html.slice(0, 100)); // Log first 100 chars
 
+        return html;
     } catch (error) {
         console.error('Scraping error:', error);
         throw error;
