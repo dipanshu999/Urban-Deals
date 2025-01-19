@@ -1,4 +1,4 @@
-const axios = require('axios');
+const axios = require('axios');  
 const { JSDOM } = require('jsdom'); // For DOM parsing
 
 const scrapeProducts = async (category) => {
@@ -16,12 +16,9 @@ const scrapeProducts = async (category) => {
 
     // Fetch the rendered HTML from ZenRows
     const response = await axios.get(zenRowsUrl);
-    if (!response.ok) {
-      const errorText = await response.text();
-      throw new Error(`ZenRows returned ${response.status}: ${errorText}`);
-    }
 
-    const html = await response.text(); // Get the full rendered HTML
+    // Get the HTML content from Axios response
+    const html = response.data; // Axios uses `data` for the response body
 
     // Parse HTML using jsdom
     const { document } = new JSDOM(html).window;
@@ -46,7 +43,7 @@ const scrapeProducts = async (category) => {
 
     return products;
   } catch (error) {
-    console.error('Scraping error:', error);
+    console.error('Scraping error:', error.message);
     throw error;
   }
 };
