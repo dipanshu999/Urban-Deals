@@ -1,25 +1,54 @@
+const fetch = require('node-fetch');
+const { JSDOM } = require('jsdom'); // For DOM parsing
+
 const scrapeProducts = async (category) => {
-    try {
-        const apiKey = process.env.SCRAPINGBEE_API_KEY;
-        if (!apiKey) throw new Error('ScrapingBee API key not found');
+  try {
+    const apiKey = process.env.ZENROWS_API_KEY; // Ensure your ZenRows API Key is added in .env
+    if (!apiKey) throw new Error('ZenRows API Key is missing');
 
-        const targetUrl = `https://www.flipkart.com/search?q=${category}`;
-        const url = `https://app.scrapingbee.com/api/v1/?api_key=${apiKey}&url=${encodeURIComponent(targetUrl)}&render_js=true&wait_for=._75nlfW`;
+    // Construct the target Flipkart URL
+    const targetUrl = `https://www.flipkart.com/search?q=${category}`;
 
-        const response = await fetch(url);
-        if (!response.ok) {
-            const error = await response.text();
-            throw new Error(`ScrapingBee API error: ${response.status} - ${error}`);
-        }
+    // ZenRows API URL with JavaScript rendering enabled
+    const zenRowsUrl = `https://api.zenrows.com/v1/?apikey=${apiKey}&url=${encodeURIComponent(
+      targetUrl
+    )}&js_render=true`;
 
-        const html = await response.text();
-        console.log('Response received:', html.slice(0, 100)); // Log first 100 chars
-
-        return html;
-    } catch (error) {
-        console.error('Scraping error:', error);
-        throw error;
+    // Fetch the rendered HTML from ZenRows
+    const response = await fetch(zenRowsUrl);
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`ZenRows returned ${response.status}: ${errorText}`);
     }
+
+    const html = await response.text(); // Get the full rendered HTML
+
+    // Parse HTML using jsdom
+    const { document } = new JSDOM(html).window;
+
+    // Extract product data based on your class selectors
+    const products = [];
+    const items = document.querySelectorAll('._75nlfW'); // Adjusted selector
+
+    items.forEach((el) => {
+      const product = {
+        brand: el.querySelector('.syl9yP')?.textContent?.trim() || '', // Adjusted brand selector
+        image: el.querySelector('._53J4C-')?.getAttribute('src') || '', // Adjusted image selector
+        title: el.querySelector('.WKTcLC')?.getAttribute('title') || '', // Adjusted title selector
+        price: el.querySelector('.Nx9bqj')?.textContent?.trim() || '', // Adjusted price selector
+        link: el.querySelector('.rPDeLR')?.getAttribute('href') || '', // Adjusted link selector
+      };
+
+      if (product.title && product.price) {
+        products.push(product);
+      }
+    });
+
+    return products;
+  } catch (error) {
+    console.error('Scraping error:', error);
+    throw error;
+  }
 };
 
 module.exports = scrapeProducts;
