@@ -1,4 +1,4 @@
-const fetch = require('node-fetch');
+const axios = require('axios');
 const { JSDOM } = require('jsdom'); // For DOM parsing
 
 const scrapeProducts = async (category) => {
@@ -15,7 +15,7 @@ const scrapeProducts = async (category) => {
     )}&js_render=true`;
 
     // Fetch the rendered HTML from ZenRows
-    const response = await fetch(zenRowsUrl);
+    const response = await axios.get(zenRowsUrl);
     if (!response.ok) {
       const errorText = await response.text();
       throw new Error(`ZenRows returned ${response.status}: ${errorText}`);
