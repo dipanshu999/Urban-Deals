@@ -10,7 +10,7 @@ export default function ScrapingPopup({}) {
       
       <p className='text-[1.6em] leading-8 font-medium mt-5'>Our <u>Web Scraper</u>  wants to show you more products of this category </p>
       
-      <button className='text-lg font-semibold border py-2 px-4 rounded-md mt-9 bg-[#FEDC00]' onClick={()=>navigate(`/scraped-products/${category}`)} >Show me</button>
+      <button className='text-lg font-semibold border py-2 px-4 rounded-md mt-9 bg-[#FEDC00]' onClick={()=>{navigate(`/scraped-products/${category}`),setIsLiked(false)}  }>Show me</button>
       <button className='text-lg font-semibold border py-2 px-4 rounded-md ml-6 bg-[]' onClick={()=>setIsLiked(false)} >No, thanks</button>
 
     </div>
