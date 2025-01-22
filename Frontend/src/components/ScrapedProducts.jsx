@@ -4,7 +4,6 @@
   import flipkart from '../components/Loader/flipkart.webp'
   import axios from 'axios'
   const backendUrl = import.meta.env.VITE_API_URL
-  let LocalHost='http://localhost:3001/'
 
   export default function ScrapedProducts() {
 
@@ -47,13 +46,33 @@
             :
 
            ( 
-            ScrapedProducts.map((item,index)=>
-              <div key={index} className='mt-4'>
-                <p>{item.title}</p>
-                <p>{item.price}</p>
-                <p>{item.brand}</p>
+
+            <>
+            <div className="heading">
+              <p className='text-center text-3xl mt-14' >Here's your products for <span className='font-bold text-green-500'> {category}</span> category  </p>
+            </div>
+
+            <div className=' card-outer-container gap-x-10 gap-y-4 mt-16 flex flex-wrap justify-center'>
+            {ScrapedProducts.map((item,index)=>
+              <div key={index}  className='card mt-4 flex border rounded-lg shadow-md p-3 h-[12rem] gap-2 w-[40%] items-center justify-between'>
+
+                <div className="image h-full w-32 border ">
+                 <img src={item.image} alt="" />
+                </div>
+
+                <div className="text-part w-[75%] h-full flex flex-col justify-between py-1">
+                 <p className='text-4xl '>{item.brand}</p>
+                 <p className='text-3xl font-bold text-orange-500'>{item.price}</p>
+                 <p className='text-base leading-[0.9rem] font-light'>{item.title}</p>
+                </div>
+
               </div>
-            ))
+              
+              
+            )} 
+            </div>
+            </>
+          )
 
         }
         
