@@ -33,7 +33,7 @@ const scrapeProducts = async (category) => {
         image: el.querySelector('._53J4C-')?.getAttribute('src') || '', // Adjusted image selector
         title: el.querySelector('.WKTcLC')?.getAttribute('title') || '', // Adjusted title selector
         price: el.querySelector('.Nx9bqj')?.textContent?.trim() || '', // Adjusted price selector
-        link: el.querySelector('.rPDeLR')?.getAttribute('href') || '', // Adjusted link selector
+        link : `https://www.flipkart.com${el.querySelector('.rPDeLR')?.getAttribute('href')}` || '', // Adjusted link selector
       };
 
       if (product.title && product.price) {
