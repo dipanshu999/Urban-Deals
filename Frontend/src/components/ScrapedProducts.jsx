@@ -44,7 +44,6 @@
             </>
            )
             :
-
            ( 
 
             <>
@@ -54,22 +53,23 @@
 
             <div className=' card-outer-container gap-x-10 gap-y-4 mt-16 flex flex-wrap justify-center'>
             {ScrapedProducts.map((item,index)=>
-              <div key={index}  className='card mt-4 flex border rounded-lg shadow-md p-3 h-[12rem] gap-2 w-[40%] items-center justify-between'>
+              <div key={index}  className='card mt-4 flex border rounded-lg shadow-md p-3 h-[13rem] gap-2 w-[40%] items-center justify-between'>
 
-                <div className="image h-full w-32 border ">
-                 <img src={item.image} alt="" />
+                <div className=" image h-full w-32 border ">
+                 <img className='w-full h-full object-cover' src={item.image} alt="" />
                 </div>
 
-                <div className="text-part w-[75%] h-full flex flex-col justify-between py-1">
+                <div className="text-part w-[75%] h-full flex flex-col justify-between ">
                  <p className='text-4xl '>{item.brand}</p>
                  <p className='text-3xl font-bold text-orange-500'>{item.price}</p>
                  <p className='text-base leading-[0.9rem] font-light'>{item.title}</p>
+                 <button className='bg-yellow-400 rounded-md w-28 font-medium py-1 px-3  ' ><a href={item.link}>Buy</a></button>
                 </div>
 
               </div>
               
               
-            )} 
+             )}
             </div>
             </>
           )
