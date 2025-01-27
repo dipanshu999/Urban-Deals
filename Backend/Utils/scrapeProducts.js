@@ -2,11 +2,38 @@ const axios = require('axios');
 const { JSDOM } = require('jsdom'); // For DOM parsing
 
 const scrapeProducts = async (category) => {
+
+  let brandSelector, imageSelector, titleSelector, linkSelector, priceSelector;
+
+  const selectors = {
+    "men's clothing": {
+      brandSelector: '.syl9yP',
+      imageSelector: '._53J4C-',
+      titleSelector: '.WKTcLC',
+      linkSelector: '.rPDeLR',
+      priceSelector: '.Nx9bqj',
+    },
+    // Add more categories and their selectors here
+    "electronics": {
+      brandSelector: '.exampleBrandSelector',
+      imageSelector: '.exampleImageSelector',
+      titleSelector: '.exampleTitleSelector',
+      linkSelector: '.exampleLinkSelector',
+      priceSelector: '.examplePriceSelector',
+    },
+  };
+
+  const categorySelectors = selectors[category];
+
+  // Handle missing category or selectors
+  if (!categorySelectors) {
+    throw new Error(`Selectors not defined for category: ${category}`);
+  }
+
   try {
-    const apiKey = process.env.ZENROWS_API_KEY; // Ensure your ZenRows API Key is added in .env
+    const apiKey = process.env.ZENROWS_API_KEY;
     if (!apiKey) throw new Error('ZenRows API Key is missing');
 
-    // Construct the target Flipkart URL
     const targetUrl = `https://www.flipkart.com/search?q=${category}`;
 
     // ZenRows API URL with JavaScript rendering enabled
@@ -23,17 +50,16 @@ const scrapeProducts = async (category) => {
     // Parse HTML using jsdom
     const { document } = new JSDOM(html).window;
 
-    // Extract product data based on your class selectors
     const products = [];
     const items = document.querySelectorAll('._75nlfW'); // Adjusted selector
 
     items.forEach((el) => {
       const product = {
-        brand: el.querySelector('.syl9yP')?.textContent?.trim() || '', // Adjusted brand selector
-        image: el.querySelector('._53J4C-')?.getAttribute('src') || '', // Adjusted image selector
-        title: el.querySelector('.WKTcLC')?.getAttribute('title') || '', // Adjusted title selector
-        price: el.querySelector('.Nx9bqj')?.textContent?.trim() || '', // Adjusted price selector
-        link : `https://www.flipkart.com${el.querySelector('.rPDeLR')?.getAttribute('href')}` || '', // Adjusted link selector
+        brand: el.querySelector(categorySelectors.brandSelector)?.textContent?.trim() || '', // Adjusted brand selector
+        image: el.querySelector(categorySelectors.imageSelector)?.getAttribute('src') || '', // Adjusted image selector
+        title: el.querySelector(categorySelectors.titleSelector)?.getAttribute('title') || '', // Adjusted title selector
+        price: el.querySelector(categorySelectors.priceSelector)?.textContent?.trim() || '', // Adjusted price selector
+        link : `https://www.flipkart.com${el.querySelector(categorySelectors.linkSelector)?.getAttribute('href')}` || '', // Adjusted link selector
       };
 
       if (product.title && product.price) {
