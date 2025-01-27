@@ -3,8 +3,6 @@ const { JSDOM } = require('jsdom'); // For DOM parsing
 
 const scrapeProducts = async (category) => {
 
-  let brandSelector, imageSelector, titleSelector, linkSelector, priceSelector;
-
   const selectors = {
     "men's clothing": {
       brandSelector: '.syl9yP',
@@ -13,13 +11,20 @@ const scrapeProducts = async (category) => {
       linkSelector: '.rPDeLR',
       priceSelector: '.Nx9bqj',
     },
-    // Add more categories and their selectors here
+
+    "women's clothing": {
+      brandSelector: '.syl9yP',
+      imageSelector: '._53J4C-',
+      titleSelector: '.WKTcLC',
+      linkSelector: '.rPDeLR',
+      priceSelector: '.Nx9bqj',
+    },
+
     "electronics": {
-      brandSelector: '.exampleBrandSelector',
-      imageSelector: '.exampleImageSelector',
-      titleSelector: '.exampleTitleSelector',
-      linkSelector: '.exampleLinkSelector',
-      priceSelector: '.examplePriceSelector',
+      imageSelector: '.DByuf4',
+      titleSelector: '.wjcEIp',
+      linkSelector: '.VJA3rP',
+      priceSelector: '.Nx9bqj',
     },
   };
 
