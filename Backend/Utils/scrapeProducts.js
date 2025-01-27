@@ -26,6 +26,22 @@ const scrapeProducts = async (category) => {
       linkSelector: '.VJA3rP',
       priceSelector: '.Nx9bqj',
     },
+
+    "jewelery": {
+      brandSelector: '.syl9yP',
+      imageSelector: '._53J4C-',
+      titleSelector: '.WKTcLC',
+      linkSelector: '.rPDeLR',
+      priceSelector: '.Nx9bqj',
+    },
+    
+    "shoes": {
+      brandSelector: '.syl9yP',
+      imageSelector: '._53J4C-',
+      titleSelector: '.WKTcLC',
+      linkSelector: '.rPDeLR',
+      priceSelector: '.Nx9bqj',
+    },
   };
 
   const categorySelectors = selectors[category];
