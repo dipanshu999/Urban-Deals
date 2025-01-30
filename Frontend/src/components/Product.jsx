@@ -57,8 +57,6 @@ export default function Product() {
       
       <div className={`bg-white w-[100vw]  relative flex flex-col gap-5 mob:w-[80vw] mob:mt-16 py-12 my-4 tab:w-[80vw] tab:min-h-[70vh] tab:flex-row tab:gap-20 lap:w-[70vw] shadow-2xl ${darkMode? 'shadow-white shadow-md':null} rounded-2xl mx-auto mt-10 justify-center items-center`}>
         
-        <HeartIcon/>
-        
         <div className="pic h-[12em] mob:h-[16em] tab:ml-2">
           <img src={image} className='h-full object-contain' alt={category} />
         </div>
