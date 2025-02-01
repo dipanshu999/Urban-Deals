@@ -11,12 +11,13 @@
     const {darkMode}=useContext(ProductContext);
 
       const [loading,setLoading]=useState(false); 
-      const [ScrapedProducts,setScrapedProducts]=useState([1,58,7,8]); 
+      const [ScrapedProducts,setScrapedProducts]=useState([5,4,8,9]);
 
       const query=useParams();
       const category=query.category
       useEffect(()=>{
           FetchScrapedProducts();
+          setLoading(true);
           console.log(category)
         },[])
 
@@ -25,11 +26,10 @@
           .then(res=>console.log(res.data))
           .catch(err=>console.log(err))
 
-          setLoading(true);
           const pro= await axios.get(`${backendUrl}/api/scrape?category=${category}`)
-          .then(res=>{console.log(res.data), setScrapedProducts(res.data)})
-          .catch(err=>console.log(err))
-          .finally(()=>setLoading(false))
+            .then(res=>{console.log(res.data), setScrapedProducts(res.data)})
+            .catch(err=>console.log(err))
+            .finally(()=>setLoading(false))
         }
 
     return (
@@ -40,9 +40,9 @@
            ( 
            <>
               <Loader/>
-              <div className={`${darkMode && 'bg-white'} flex items-center justify-center mt-[21rem] gap-2`}>
-                <div className='font-semibold text-2xl'>Scraping products from ... </div> 
-                <div className='w-44 '><img className='' src={flipkart} alt="" /></div>
+              <div className={`${darkMode && 'bg-white '}  text-center mob:flex mob:items-center mob:justify-center mt-[25.5rem] mob:mt-[22rem] `}>
+                <div className=' font-semibold text-2xl mob:mt-0'>Scraping products from ... </div> 
+                <div className='w-44 mx-auto mob:m-0'><img className='' src={flipkart} alt="" /></div>
               </div>
             </>
            )

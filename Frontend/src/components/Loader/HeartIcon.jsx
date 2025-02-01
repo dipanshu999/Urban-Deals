@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import heart from '../Loader/heart.svg'
 import { ScrapingContext } from "../../Utils/ScrapinggContext";
 
 const HeartIcon = ({category}) => {
@@ -8,9 +7,9 @@ const HeartIcon = ({category}) => {
   const {handleLikeClick}=useContext(ScrapingContext)
 
   // Function to toggle the heart color
-  const toggleLike = () => {
-    setIsLiked(!isLiked);
-  };
+   const toggleLike = () => {
+     setIsLiked(!isLiked);
+   };
 
   return (
     <div className="ml-1 mt-1 absolute" onClick={()=>handleLikeClick(category)} >

@@ -52,7 +52,7 @@ export default function Home() {
             <>
               <div className="fixed inset-0 bg-black bg-opacity-50 z-40"></div>  {/* Overlay div*/}
               <div className="fixed inset-0 z-50 flex justify-center items-center">
-                <ScrapingPopup />
+                <ScrapingPopup/>
               </div>
             </>
                }
@@ -64,7 +64,7 @@ export default function Home() {
             
           <div className={` ${IsLiked && 'blur-md cursor-not-allowed'} card-container gap-6 xsm:w-[92vw] xsm:gap-12 lap:w-[90%] mob:gap-12 lap:gap-16 mx-auto flex flex-wrap pt-6 justify-center`}>
             {filteredProducts.map(item => (
-                <Card key={item.id} item={item} IsLiked={IsLiked} />
+                <Card key={item.id} item={item}  />
             ))}
           </div>
         </div>
