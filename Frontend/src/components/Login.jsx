@@ -67,7 +67,7 @@ export default function Login() {
     let googleLogin = async()=>{
         try{
         // let redirectURL=window.location.origin;
-        account.createOAuth2Session('google', 'https://urban-deals.netlify.app');
+        account.createOAuth2Session('google', 'https://urban-deals.vercel.app');
         toast.success('Login with Google successfull');
     }catch(err){
         console.log('OAuth login error:', err);
@@ -81,7 +81,7 @@ export default function Login() {
         try {
             setLoading(true); 
             // let redirectURL = window.location.origin;
-            account.createOAuth2Session('github', 'https://urban-deals.netlify.app'); // No need for await here
+            account.createOAuth2Session('github', 'https://urban-deals.vercel.app'); // No need for await here
             toast.success('Login with Github successfull');
             // The redirection happens here, so the code below won't be executed immediately
         } catch (err) {

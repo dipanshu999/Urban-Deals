@@ -15,7 +15,7 @@ export default function About() {
     { summary: '2.  Why did you choose React, Tailwind CSS and Material UI', detail: "React is used for making single page application which updates the website data by using virtual-dom, Tailwind CSS for using css classes and Material UI for using stylish components" },
     { summary: '3.  How data is fetched and stored in Urban Deals', detail: 'Data is fetched from an external API is called Fakestore where we get all the details of products like their price, title, category etc. After that the data is stored in the local storage of user so that unique data can be shown according to different users' },
     { summary: '4.  How is Responsive design is acheived in Urban-Deals', detail: 'Resposnive design is acheived by using Tailwind CSS where we took help of amazing CSS properties like Flex-box, width, padding etc.' },
-    { summary: '5.  What features does Urban-Deals offer', detail: 'It offers you to perform CRUD(Create, Read, Update, Delete) operation , Email and third party based app authentication,  Category wise product filter, Toggle between light and dark mode, price evaluation at cart section etc and. Using Context API helps to access of data all over across the app' },
+    { summary: '5.  What features does Urban-Deals offer', detail: 'It offers you to perform CRUD(Create, Read, Update, Delete) operation , Web Scraping of liked products from Flipkart ,Email and third party based app authentication,  Category wise product filter, Toggle between light and dark mode, price evaluation at cart section etc and. Using Context API helps to access of data all over across the app' },
     // { summary: '6.  Random summary to be written here', detail: ' rerum inventore nostrum!' }
   ];
 
@@ -38,7 +38,8 @@ export default function About() {
 
         <div className="description w-[90%] mob:w-[90%] tab:w-[80%] mx-auto mt-6 ">
           <p className={`text-center opacity-65 leading-[1.2rem]  mob:leading-5 ${darkMode?'text-white': 'text-slate-700'} `}> 
-            <span className='text-blue-700 shadow-lg shadow-blue-200 text-lg font-semibold'>Frontend developer</span>  🚀 Crafting Seamless UIs with - React JS ☢|| Javascript || Tailwind CSS || HTML || CSS || Context API || Git/GitHub</p>
+            <span className='text-blue-700 shadow-lg shadow-blue-200 text-lg font-semibold'>Frontend developer</span>  🚀 Crafting Seamless UIs with - React JS ☢|| Javascript || Tailwind CSS || HTML || CSS || Context API || Git/GitHub
+          </p>
         </div>
       </div>
 
