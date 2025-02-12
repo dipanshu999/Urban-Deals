@@ -14,7 +14,7 @@
       const [ScrapedProducts,setScrapedProducts]=useState([5,4,8,9]);
 
       const query=useParams();
-      const category=query.category
+      const category=query.category;
       useEffect(()=>{
           FetchScrapedProducts();
           setLoading(true);
